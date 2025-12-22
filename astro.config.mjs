@@ -1,8 +1,7 @@
-import tailwind from '@astrojs/tailwind';
 import { defineConfig } from 'astro/config';
 
 export default defineConfig({
-  integrations: [tailwind()],
+  // Tailwind is configured via PostCSS (`postcss.config.js`) + `src/styles/global.css`.
   output: 'static',
   vite: {
     ssr: {
