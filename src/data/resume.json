@@ -1,0 +1,91 @@
+{
+  "name": "Your Name",
+  "title": "Senior Software Engineer",
+  "location": "Remote · Open to relocation",
+  "summary": "Product-minded engineer with a focus on building resilient web platforms, leading teams, and delivering accessible user experiences.",
+  "contact": {
+    "email": "you@example.com",
+    "phone": "+1 (555) 123-4567",
+    "website": "https://your-portfolio.com",
+    "linkedin": "https://www.linkedin.com/in/yourprofile",
+    "github": "https://github.com/yourhandle"
+  },
+  "skills": [
+    {
+      "category": "Languages",
+      "items": ["TypeScript", "JavaScript", "Python", "Go"]
+    },
+    {
+      "category": "Frameworks",
+      "items": ["Astro", "React", "Next.js", "Node.js", "Express"]
+    },
+    {
+      "category": "Cloud & DevOps",
+      "items": ["AWS", "Docker", "Terraform", "Vite", "GitHub Actions"]
+    },
+    {
+      "category": "Databases",
+      "items": ["PostgreSQL", "Redis", "MongoDB", "SQLite"]
+    }
+  ],
+  "experience": [
+    {
+      "company": "Northwind Labs",
+      "role": "Lead Software Engineer",
+      "location": "Remote",
+      "start": "2022",
+      "end": "Present",
+      "summary": "Leading a cross-functional squad building data-rich web applications.",
+      "achievements": [
+        "Architected a component library with Tailwind + Astro that reduced design implementation time by 30%.",
+        "Mentored 5 engineers, introducing pairing rotations and documentation standards that cut onboarding time in half.",
+        "Shipped an observability stack (OpenTelemetry + Prometheus) improving incident resolution time by 40%."
+      ]
+    },
+    {
+      "company": "Acme Corp",
+      "role": "Senior Frontend Engineer",
+      "location": "New York, NY",
+      "start": "2019",
+      "end": "2022",
+      "summary": "Delivered performant client features for a SaaS analytics suite.",
+      "achievements": [
+        "Built a multi-tenant design system in React + Storybook adopted by 4 product teams.",
+        "Improved page performance and accessibility scores to 95+ across the dashboard surfaces.",
+        "Collaborated with product to launch a customizable reporting experience used by 10k+ users."
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "name": "Personal Analytics",
+      "summary": "Self-hosted dashboard for tracking habits, bookmarks, and metrics.",
+      "technologies": ["Astro", "Tailwind", "Supabase", "Cloudflare Workers"],
+      "link": "https://github.com/yourhandle/personal-analytics",
+      "highlights": [
+        "Composable card system backed by JSON schema for new data sources.",
+        "Serverless ingestion pipeline with automated backfill jobs."
+      ]
+    },
+    {
+      "name": "UI Patterns",
+      "summary": "Reference site of accessible UI building blocks.",
+      "technologies": ["React", "TypeScript", "Storybook", "Vitest"],
+      "link": "https://your-portfolio.com/ui-patterns",
+      "highlights": [
+        "Keyboard-first components with ARIA labeling and focus traps.",
+        "Interactive playgrounds powered by MDX and live code previews."
+      ]
+    }
+  ],
+  "education": [
+    {
+      "school": "State University",
+      "degree": "B.S. Computer Science",
+      "location": "City, State",
+      "start": "2014",
+      "end": "2018",
+      "details": "Graduated with honors. Led the developer student club and organized weekly coding labs."
+    }
+  ]
+}

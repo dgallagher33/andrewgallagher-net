@@ -1,0 +1,53 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+  --bg-gradient: radial-gradient(circle at 20% 20%, rgba(125, 211, 252, 0.25), transparent 30%),
+    radial-gradient(circle at 80% 0%, rgba(226, 232, 240, 0.6), transparent 32%),
+    linear-gradient(135deg, #f8fafc 0%, #eef2ff 100%);
+}
+
+a {
+  @apply text-sky-700 underline underline-offset-4 decoration-2 decoration-sky-200 hover:decoration-sky-500;
+}
+
+@layer base {
+  body {
+    @apply text-slate-800;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-display text-slate-900;
+  }
+
+  ::selection {
+    @apply bg-sky-200 text-slate-900;
+  }
+}
+
+@layer components {
+  .glass-panel {
+    @apply rounded-3xl border border-white/60 bg-white/70 shadow-lg shadow-slate-200/60 backdrop-blur;
+  }
+
+  .pill {
+    @apply inline-flex items-center gap-2 rounded-full border border-slate-200/80 bg-white/80 px-3 py-1 text-sm font-medium text-slate-700 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md;
+  }
+
+  .soft-button {
+    @apply inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold transition duration-200 ease-out;
+  }
+
+  .soft-button.primary {
+    @apply bg-slate-900 text-white shadow-card hover:-translate-y-0.5 hover:bg-slate-800;
+  }
+
+  .soft-button.secondary {
+    @apply border border-slate-300 bg-white text-slate-800 hover:-translate-y-0.5 hover:border-slate-400;
+  }
+}

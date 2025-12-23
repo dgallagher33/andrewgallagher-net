@@ -1,0 +1,28 @@
+---
+interface Props {
+  title: string;
+  subtitle?: string;
+  icon?: string;
+}
+
+const { title, subtitle, icon } = Astro.props;
+---
+<section class="glass-panel flex flex-col gap-4 p-6 sm:p-7">
+  <header class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between sm:gap-4">
+    <div class="flex items-center gap-3">
+      {icon && (
+        <span class="flex h-12 w-12 items-center justify-center rounded-2xl bg-sky-50 text-xl text-sky-700 shadow-inner shadow-sky-100">
+          {icon}
+        </span>
+      )}
+      <div>
+        <h2 class="text-xl font-semibold text-slate-900 sm:text-2xl">{title}</h2>
+        {subtitle && <p class="text-sm text-slate-500">{subtitle}</p>}
+      </div>
+    </div>
+    <slot name="action" />
+  </header>
+  <div class="space-y-4">
+    <slot />
+  </div>
+</section>
