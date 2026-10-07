@@ -4,7 +4,7 @@ Personal portfolio site built with Astro.
 
 ## Update and publish
 
-1. Edit the portfolio source in `site/index.html`. The Astro route at `src/pages/index.astro` imports that page and renders it.
+1. Edit the portfolio in `src/pages/index.astro`. Its markup, responsive styles, and small interactive lab map live in the Astro page.
 2. Push changes to `main`.
 3. GitHub Actions installs the locked dependencies, runs `npm run build`, and publishes Astro's `dist/` output to the `deploy` branch.
 4. In SPanel, connect this private repository using the `deploy` branch and set its deployment/document root to:
