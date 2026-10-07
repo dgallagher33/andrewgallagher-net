@@ -1,0 +1,33 @@
+---
+import { cases } from '../data/career';
+---
+<section class="section professional" id="work" aria-labelledby="work-heading">
+  <div class="section-head">
+    <div><p class="eyebrow">01 / Professional work</p><h2 id="work-heading">Complex operations.<br />Practical improvements.</h2></div>
+    <p>Selected work at McNeil &amp; Co. My contribution, the result, and the decisions behind it.</p>
+  </div>
+  <div class="case-toolbar" hidden data-enhanced>
+    <p id="case-count" role="status">6 professional examples</p>
+    <button class="text-button" type="button" id="show-all">Show all work</button>
+  </div>
+  <div class="case-grid">
+    {cases.map((item) => (
+      <article class="case-card" id={item.id} data-case data-roles={item.roles.join(' ')} aria-labelledby={`${item.id}-heading`}>
+        <p class="project-label">{item.category}</p>
+        <h3 id={`${item.id}-heading`}>{item.title}</h3>
+        <p>{item.summary}</p>
+        <p class="case-result">{item.result}</p>
+        <div class="tags">{item.tags.map(tag => <span class="tag">{tag}</span>)}</div>
+        <details>
+          <summary>Read the case study<span class="sr-only">: {item.title}</span></summary>
+          <div class="case-story">
+            <h4>The problem</h4><p>{item.problem}</p>
+            <h4>My contribution</h4><p>{item.contribution}</p>
+            <h4>The outcome</h4><p>{item.outcome}</p>
+            <h4>The decision behind it</h4><p>{item.judgment}</p>
+          </div>
+        </details>
+      </article>
+    ))}
+  </div>
+</section>
