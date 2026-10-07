@@ -4,8 +4,8 @@ on:
   push:
     branches: [main]
     paths:
-      - "site/**"
-      - ".github/workflows/deploy-spanel.yml"
+      - "site/index.html"
+      - "site/assets/**"
   workflow_dispatch:
 
 permissions:
