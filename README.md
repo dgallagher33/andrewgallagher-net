@@ -41,3 +41,11 @@ Case studies use native disclosures for deeper reading. All professional example
 
 See `docs/content-evidence.md` for the editorial source mapping and limits on the claims used here.
 
+## Detailed project pages
+
+Home Assistant has an optional deep dive at `/projects/home-assistant/`, linked from the short homelab overview. The full narrative lives in `src/pages/projects/home-assistant.astro`, with reusable project chrome in `src/layouts/ProjectLayout.astro`.
+
+Add or update interaction walkthroughs and future research directions in `src/data/home-assistant.ts`. The walkthrough selector is in `src/scripts/home-assistant.ts`, and page styles are in `src/styles/home-assistant.css`. All scenarios remain readable without JavaScript and when printing.
+
+Keep setup observations, intended interactions, acceptance checks, and future research clearly distinguished as this project grows. Add measured or verified results only when supported by new evidence.
+
