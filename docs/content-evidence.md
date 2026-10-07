@@ -28,3 +28,20 @@ Existing homelab content, node descriptions, identity work, home automation, and
 - Do not invent adoption, error-reduction, throughput, or time-savings metrics for qualitative results.
 - Java is a programming foundation, not claimed current professional proficiency.
 - Do not invent exact employment dates or total tenure. The role-selection year is supported, while the exact title-history dates remain open.
+
+## Home Assistant project page
+
+The detailed page uses project conversation context in addition to the career sources, which only establish broader infrastructure and AI work. It adds no live Home Assistant access or private configuration downloads.
+
+| Detail | Evidence and framing |
+| --- | --- |
+| Inovelli Blue switch and bulb on ZHA; smart-bulb mode enabled | August 2026 setup reports and the existing portfolio overview. |
+| Macro/config button selects the next-on scene; LED shows that scene | User-defined interaction requirements from August 28, 2026. Do not imply all transitions have been hardware-tested. |
+| Red should activate without briefly showing the previous scene | User-defined requirement. The walkthrough labels its repeated transition check as an acceptance check, not a recorded test result. |
+| Missing up single-press event and Hermes API assistance | August 2026 conversation context. Describe troubleshooting and progress without claiming a specific final configuration or publishing invented YAML. |
+| Two Inovelli bulbs in one fixture; group light entity appeared under the coordinator | Explicit user setup and observation from September 30, 2026. Do not claim direct Zigbee binding, synchronized packet timing, or a separate fixture device was implemented. |
+| AI-assistant prompt development and minimal-loss compression | September 28–30, 2026 request and delivered prompt work. The 7,900-character constraint applies to the related Home Improvement / Home Assistant project prompt; no measured token or reliability improvement is claimed. |
+| Custom voice speaker and whole-home energy monitoring | October 5 and October 1, 2026 research requests. Label these as exploring, not delivered systems. |
+| Home Assistant OS hosted on Fuji | Existing portfolio node description and established homelab context. |
+
+The scenario walkthrough presents intended behavior and acceptance criteria. It is illustrative and does not connect to or operate the home. Design implications, such as separating scene selection from current output or distinguishing device ownership from presentation, are explained as reasoning rather than measured outcomes.
