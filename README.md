@@ -1,20 +1,34 @@
 # Andrew Gallagher — Product & Systems
 
-Personal portfolio site.
+Personal portfolio site built with Astro.
 
 ## Update and publish
 
-1. Put the static website files in `site/`. The entry page must be `site/index.html`.
-2. Commit and push changes to `main`.
-3. GitHub Actions publishes the contents of `site/` to the `deploy` branch when `site/index.html` or `site/assets/` changes.
-4. In SPanel, connect this repository using the `deploy` branch and set its deployment/document root to:
+1. Edit the portfolio source in `site/index.html`. The Astro route at `src/pages/index.astro` imports that page and renders it.
+2. Push changes to `main`.
+3. GitHub Actions installs the locked dependencies, runs `npm run build`, and publishes Astro's `dist/` output to the `deploy` branch.
+4. In SPanel, connect this private repository using the `deploy` branch and set its deployment/document root to:
 
    `/home/andrewga/public_html`
 
-For a private repository, SPanel needs GitHub read access. Configure an SPanel Git webhook for updates to the `deploy` branch if the panel offers it; otherwise use SPanel's pull/update action after each successful workflow run.
+SPanel needs read access to the private repository. If its Git integration supports a webhook for branch updates, connect it to the `deploy` branch; otherwise use SPanel's pull/update action after a successful GitHub Actions run.
 
-The deployment branch contains only the static website files. The `main` branch is the editable source. Do not point the live domain at `main`.
+The `main` branch is the editable source. The `deploy` branch contains only the generated static site.
 
-## GitHub Actions
+## Local development
 
-The workflow is `.github/workflows/deploy-spanel.yml`. It checks that `site/index.html` exists and publishes the files to `deploy`. It can also be started manually from the Actions tab after the site source is present.
+Use Node.js 22 or later:
+
+```sh
+npm ci
+npm run dev
+```
+
+Create a production build with:
+
+```sh
+npm run build
+npm run preview
+```
+
+GitHub Actions also builds the site for pull requests. It updates `deploy` only after a push to `main`.
