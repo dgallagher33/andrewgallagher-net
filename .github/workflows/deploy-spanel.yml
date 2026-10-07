@@ -1,0 +1,37 @@
+name: Publish static site for SPanel
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "site/index.html"
+      - "site/assets/**"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: spanel-static-site
+  cancel-in-progress: true
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out source
+        uses: actions/checkout@v4
+
+      - name: Validate and stage site
+        run: |
+          test -s site/index.html
+          mkdir public-site
+          cp -a site/. public-site/
+
+      - name: Publish deploy branch
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./public-site
+          publish_branch: deploy
+          force_orphan: true
