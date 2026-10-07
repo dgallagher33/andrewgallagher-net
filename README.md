@@ -1,72 +1,20 @@
-# Welcome to Astro + Tailwind CSS + TypeScript
+# Andrew Gallagher — Product & Systems
 
-This is a modern website built with:
-- **Astro** - Fast, modern static site generator
-- **Tailwind CSS** - Utility-first CSS framework
-- **TypeScript** - Type-safe development
+Personal portfolio site.
 
-## Getting Started
+## Update and publish
 
-### Prerequisites
-- Node.js 18+ or higher
+1. Put the static website files in `site/`. The entry page must be `site/index.html`.
+2. Commit and push changes to `main`.
+3. GitHub Actions publishes the contents of `site/` to the `deploy` branch.
+4. In SPanel, connect this repository using the `deploy` branch and set its deployment/document root to:
 
-### Installation
+   `/home/andrewga/public_html`
 
-```bash
-npm install
-```
+For a private repository, SPanel needs GitHub read access. Configure an SPanel Git webhook for updates to the `deploy` branch if the panel offers it; otherwise use SPanel's pull/update action after each successful workflow run.
 
-### Development
+The deployment branch contains only the built static website. The `main` branch is the editable source. Do not point the live domain at `main`.
 
-Start the development server:
+## GitHub Actions
 
-```bash
-npm run dev
-```
-
-Visit `http://localhost:3000` to see your site.
-
-### Building
-
-Build for production:
-
-```bash
-npm run build
-```
-
-Preview the build:
-
-```bash
-npm run preview
-```
-
-## Project Structure
-
-```
-src/
-├── components/       # Reusable Astro components
-├── layouts/         # Layout components
-├── pages/           # Page routes (file-based routing)
-└── styles/          # Global styles and CSS
-
-public/              # Static assets
-```
-
-## TypeScript Configuration
-
-This project uses TypeScript with path aliases:
-- `@/*` maps to `src/*`
-
-Check `tsconfig.json` for full configuration.
-
-## Tailwind CSS
-
-Tailwind CSS is already configured and integrated. You can use all Tailwind utility classes in your components.
-
-Global styles are in `src/styles/global.css`.
-
-## Learn More
-
-- [Astro Documentation](https://docs.astro.build)
-- [Tailwind CSS Documentation](https://tailwindcss.com/docs)
-- [TypeScript Documentation](https://www.typescriptlang.org/docs)
+The workflow is `.github/workflows/deploy-spanel.yml`. It runs when `site/` changes on `main`, verifies `site/index.html`, and publishes the static files to `deploy`. It can also be started manually from the Actions tab.
