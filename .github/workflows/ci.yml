@@ -38,3 +38,10 @@ jobs:
         env:
           EXPECT_PREVIEW_HEADERS: '1'
         run: npm run verify:dist
+      - name: Archive preview output for offline review
+        uses: actions/upload-artifact@v4
+        with:
+          name: preview-dist
+          path: dist/
+          if-no-files-found: error
+          retention-days: 7
