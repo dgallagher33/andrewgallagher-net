@@ -31,6 +31,9 @@ const nodes = [
       </a>
     ))}
   </svg>
+  <nav class="systems-mobile-links" aria-label="Explore connected work">
+    {nodes.map(node=><a href={node.href}><strong>{node.label}</strong><span>{node.sub} ↗</span></a>)}
+  </nav>
   <figcaption class="systems-network-detail">
     <span class="eyebrow">CONNECTION IN FOCUS</span>
     <strong data-system-detail-title>Product strategy</strong>
