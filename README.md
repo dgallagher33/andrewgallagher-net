@@ -73,3 +73,9 @@ Theme selection is implemented by `ThemeToggle.astro`, `src/scripts/theme.ts`, a
 The professional workflow page uses `src/scripts/process.ts` for optional Before / After / Compare controls. Both conceptual stages remain visible without JavaScript and when printed.
 
 The landing diagram uses a full-size two-column link grid below 520px rather than compressing SVG labels to unreadable sizes. Each link leads to the same evidence-backed page. Shared `PersonMetadata.astro` emits basic professional structured data only; canonical/sitemap URLs are intentionally omitted until the production hostname is confirmed.
+
+## LinkedIn-backed career updates
+
+The resume content model in src/data/resume.ts includes dated role history, earlier technical work, education, languages, prior employment and LinkedIn-listed learning. Update the model rather than scattering role details across individual pages.
+
+The owner's LinkedIn export is not committed: it contains an outdated physical mailing address. docs/content-evidence.md documents the source and differentiates self-reported dates, interview-based achievements, and independently unverified graduation or certification details. Keep the full early career history on /resume/ while reserving homepage space for relevant product and technical experience.
