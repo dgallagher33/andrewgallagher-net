@@ -19,8 +19,8 @@ const nodes = [
     <g class="system-connections" aria-hidden="true">
       <path d="M157 91H483V244H157V397H483"/>
       <path d="M157 91V244M483 91L157 397M157 244L483 397"/>
-      <circle class="network-pulse pulse-one" r="4"><animateMotion dur="8s" repeatCount="indefinite" path="M157 91H483V244H157V397H483"/></circle>
-      <circle class="network-pulse pulse-two" r="4"><animateMotion dur="11s" repeatCount="indefinite" path="M483 91L157 397"/></circle>
+      <circle class="network-pulse pulse-one" cx="157" cy="91" r="4"/>
+      <circle class="network-pulse pulse-two" cx="483" cy="397" r="4"/>
     </g>
     {nodes.map((node) => (
       <a class="system-node" href={node.href} data-system-key={node.key} data-system-title={node.title} data-system-description={node.description} aria-label={`${node.title}: ${node.description}`}>
