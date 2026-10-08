@@ -58,3 +58,16 @@
 @media(max-width:380px){.gaia-node-nav,.gaia-layer-grid{grid-template-columns:1fr}.gaia-layer{min-height:0}.gaia-node-link{min-height:0}.systems-network-heading{flex-direction:column}.systems-network-detail{padding:18px}}
 @media(prefers-reduced-motion:reduce){.system-connections path,.network-pulse{animation:none}.network-pulse{display:none}.system-node rect,.system-node circle,.gaia-node-link{transition:none}.gaia-node-link:hover{transform:none}}
 @media print{.systems-network{box-shadow:none}.gaia-explorer{background:white}.gaia-panels,.gaia-node-nav,.gaia-layer-grid{display:block}.gaia-layer,.gaia-panel{background:white!important;color:#111!important;break-inside:avoid;margin:10px 0}.gaia-panel[hidden]{display:grid!important}.system-connections path{animation:none}}
+
+/* SVG labels need real-size mobile alternatives rather than shrinking below legibility. */
+.systems-mobile-links{display:none}
+.gaia-node-nav{height:auto;min-height:0;align-items:stretch;justify-content:normal}
+@media(max-width:520px){
+ .systems-network svg{display:none}
+ .systems-mobile-links{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;padding:20px}
+ .systems-mobile-links a{display:flex;flex-direction:column;justify-content:center;min-height:76px;padding:12px;border:1px solid #4c75a7;border-radius:8px;background:#1b3355;color:#fff}
+ .systems-mobile-links a strong{font-size:.87rem;line-height:1.3}
+ .systems-mobile-links a span{font:.69rem ui-monospace,Consolas,monospace;color:#c2d7f2;margin-top:7px;line-height:1.4}
+ .systems-network-detail{display:none}
+}
+@media print{.gaia-node-nav{display:none}.systems-mobile-links{display:none!important}}
