@@ -23,3 +23,5 @@
   .resume-role ul{margin:2pt 0!important;padding-left:14pt!important}.resume-role li{font-size:8.4pt!important;line-height:1.24!important;margin:0 0 3pt!important;orphans:2;widows:2}
   .resume-skills{grid-template-columns:1fr 1fr!important;gap:5pt 16pt!important}.resume-skills>div{break-inside:avoid!important}.resume-skills h3{font-size:8.5pt!important}.resume-skills p{font-size:8pt!important;line-height:1.23!important;margin:1pt 0!important;color:#222!important}
 }
+
+.print-button[hidden]{display:none!important}
