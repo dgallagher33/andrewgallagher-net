@@ -8,7 +8,7 @@ Personal portfolio site built with Astro.
 
 1. Open a PR to `main`. GitHub Actions installs locked dependencies, builds Astro, verifies internal routes/links, and checks the Cloudflare preview variant.
 2. After connecting Cloudflare Pages as described in [the deployment runbook](docs/deployment.md), each PR also receives an individual hosted Pages preview URL.
-3. The optional **Promote PR to shared staging** manual GitHub workflow points `staging` at a chosen open PR. A proxied Cloudflare CNAME then exposes it at `test.andrewgallagher.net`.
+3. The optional **Promote PR to shared staging** manual GitHub workflow points `staging` at a chosen open PR. Cloudflare Pages uses `staging` as that preview project's default branch and serves its custom domain at `test.andrewgallagher.net`.
 4. After review, merge the PR into `main`. The production workflow builds and publishes the static `dist/` output to `deploy`. SPanel must still update its checkout to serve the result.
 5. Compare the footer build revision to the intended source commit. See [recovery notes](docs/recovery.md) for the lost portfolio history and safety checks.
 
