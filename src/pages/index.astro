@@ -4,6 +4,7 @@ import SystemsNetwork from '../components/SystemsNetwork.astro';
 import GaiaExplorer from '../components/GaiaExplorer.astro';
 import ThemeToggle from '../components/ThemeToggle.astro';
 import BuildRevision from '../components/BuildRevision.astro';
+import PersonMetadata from '../components/PersonMetadata.astro';
 import '../styles/base.css';
 import '../styles/portfolio.css';
 import '../styles/evolution.css';
@@ -22,6 +23,7 @@ try {
   document.documentElement.dataset.theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
 }
 </script>
+<PersonMetadata />
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Andrew Gallagher — Product & Systems</title>
 <meta name="description" content="Digital Product Manager bridging insurance operations and technology. Explore product leadership, SQL and API work, applied AI, and a hands-on homelab.">
