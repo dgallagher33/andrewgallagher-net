@@ -67,3 +67,7 @@ The homepage renders `SystemsNetwork.astro` as an SVG map of professional capabi
 `GaiaExplorer.astro` and `src/data/gaia.ts` describe a public, conceptual view of Gaia's architecture. Node links jump to in-page descriptions without JavaScript. With scripting available, selection narrows the view to one node. This is **not live infrastructure data** and must never include private hostnames, control endpoints or permission configuration.
 
 Theme selection is implemented by `ThemeToggle.astro`, `src/scripts/theme.ts`, and `src/styles/theme.css`. The site uses system appearance unless a visitor explicitly selects and stores light/dark mode in their browser. Maintain print styles and reduced-motion behavior when extending the system. `src/styles/systems.css` owns the diagram and explorer presentation; `src/scripts/systems.ts` owns their progressive enhancements.
+
+**Live revision identifier:** The build step supplies `PUBLIC_BUILD_SHA` from the GitHub commit. `BuildRevision.astro` displays its short SHA in the static footer. For a completed deployment, compare that label with the commit built for `main` to distinguish stale SPanel output from stale source. Local builds omit the label unless the variable is supplied; no private secrets are used.
+
+The professional workflow page uses `src/scripts/process.ts` for optional Before / After / Compare controls. Both conceptual stages remain visible without JavaScript and when printed.
