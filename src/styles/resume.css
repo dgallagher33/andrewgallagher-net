@@ -25,3 +25,42 @@
 }
 
 .print-button[hidden]{display:none!important}
+
+/* Source-backed education and technical background, arranged for both web and print. */
+.resume-section-lead{color:var(--muted);margin:-9px 0 20px;max-width:720px}
+.resume-early-grid{display:grid;gap:14px}
+.resume-early-role{padding:17px 20px;background:var(--light);border-left:3px solid var(--blue);break-inside:avoid}
+.resume-early-role p{margin:4px 0;color:var(--muted);font-size:.9rem}
+.resume-early-role .resume-organization{color:var(--blue);font-weight:600}
+.resume-education-list{display:grid;gap:18px}
+.resume-education-entry{display:flex;justify-content:space-between;align-items:start;gap:20px;break-inside:avoid}
+.resume-education-entry h3{font-size:1.08rem;margin:0 0 4px}
+.resume-education-entry p{color:var(--muted);margin:0}
+.resume-education-entry>span{font-size:.87rem;white-space:nowrap;color:var(--muted)}
+.resume-development-grid{display:grid;grid-template-columns:minmax(0,.75fr) minmax(0,1.25fr);gap:30px}
+.resume-development-grid h3{margin:0 0 8px;font-size:.96rem}
+.resume-development-grid p{margin:0;color:var(--muted)}
+.resume-development-grid .resume-qualification{margin-top:5px;font-size:.75rem}
+.resume-development-grid ul{margin:0;padding-left:18px;color:var(--muted);font-size:.91rem}
+.resume-development-grid li{margin-bottom:4px}
+.resume-additional-list{display:grid;gap:9px}
+.resume-additional-list p{margin:0;font-size:.9rem;color:var(--muted)}
+.resume-additional-list strong{color:var(--ink)}
+.resume-additional-list span{font-size:.83rem;white-space:nowrap}
+.resume-languages{margin:17px 0 0;color:var(--muted);font-size:.87rem}
+@media(max-width:700px){.resume-development-grid{grid-template-columns:1fr}.resume-education-entry{display:block}.resume-education-entry>span{display:block;margin-top:4px}.resume-early-role{padding:15px}}
+@media print{
+ .resume-section-lead{font-size:8pt!important;line-height:1.25;margin:0 0 5pt!important;color:#222!important}
+ .resume-early-grid{display:block!important}.resume-early-role{background:white!important;border-left:0!important;padding:0 0 5pt!important;break-inside:avoid}
+ .resume-early-role .resume-role-head{display:flex!important}.resume-early-role .resume-role-head h3{font-size:8.7pt!important}
+ .resume-early-role p{font-size:8pt!important;line-height:1.2!important;margin:1pt 0!important;color:#222!important}
+ .resume-early-role .resume-organization{color:#333!important}
+ .resume-education-list{gap:4pt!important}.resume-education-entry{display:flex!important;gap:12pt!important}
+ .resume-education-entry h3{font-size:8.6pt!important;margin:0 0 1pt!important}.resume-education-entry p,.resume-education-entry>span{font-size:8pt!important;line-height:1.25!important;color:#222!important}
+ .resume-development-grid{grid-template-columns:1fr 1.6fr!important;gap:14pt!important}
+ .resume-development-grid h3{font-size:8.5pt!important;margin:0 0 3pt!important}
+ .resume-development-grid p,.resume-development-grid li{font-size:7.7pt!important;line-height:1.2!important;color:#222!important}
+ .resume-development-grid ul{padding-left:12pt!important}.resume-development-grid li{margin:0 0 2pt!important}
+ .resume-additional-list{gap:2pt!important}.resume-additional-list p,.resume-languages{font-size:7.7pt!important;line-height:1.2!important;color:#222!important}
+ .resume-additional-list span{font-size:7.4pt!important}.resume-languages{margin:4pt 0 0!important}
+}
