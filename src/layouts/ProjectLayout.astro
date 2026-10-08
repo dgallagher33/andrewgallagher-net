@@ -1,12 +1,23 @@
 ---
+import ThemeToggle from '../components/ThemeToggle.astro';
 import '../styles/base.css';
 import '../styles/portfolio.css';
+import '../styles/theme.css';
 interface Props { title: string; description: string; }
 const { title, description } = Astro.props;
 ---
 <!doctype html>
 <html lang="en">
   <head>
+    <script is:inline>
+try {
+  const value = localStorage.getItem('ag-theme');
+  document.documentElement.dataset.theme = value === 'dark' || value === 'light'
+    ? value : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+} catch {
+  document.documentElement.dataset.theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+}
+</script>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>{title} — Andrew Gallagher</title>
@@ -18,7 +29,7 @@ const { title, description } = Astro.props;
   </head>
   <body id="top">
     <a class="skip" href="#main">Skip to content</a>
-    <header><nav class="wrap" aria-label="Main navigation"><a class="brand" href="/" aria-label="Andrew Gallagher home"><span class="monogram" aria-hidden="true">AG</span><span>Andrew Gallagher</span></a><div class="nav-links"><a href="/work/">Work</a><a href="/resume/">Résumé</a><a href="/projects/">Projects</a><a href="/#about">About</a><a href="/#contact">Contact</a></div></nav></header>
+    <header><nav class="wrap" aria-label="Main navigation"><a class="brand" href="/" aria-label="Andrew Gallagher home"><span class="monogram" aria-hidden="true">AG</span><span>Andrew Gallagher</span></a><div class="nav-links"><a href="/work/">Work</a><a href="/resume/">Résumé</a><a href="/projects/">Projects</a><a href="/#about">About</a><a href="/#contact">Contact</a></div><ThemeToggle /></nav></header>
     <main id="main"><slot /></main>
     <footer><div class="wrap footer-inner"><span>Andrew Gallagher · Product &amp; Systems</span><a href="/#home-assistant">Back to the lab</a><a href="#top">Back to top</a></div></footer>
   </body>
