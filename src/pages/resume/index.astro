@@ -7,13 +7,13 @@ import '../../styles/resume.css';
   <article class="resume-page wrap" id="resume">
     <div class="resume-actions" aria-label="Résumé actions">
       <span class="eyebrow">Professional résumé</span>
-      <div><button type="button" class="button print-button" onclick="window.print()">Print / Save as PDF</button><a href="/work/">Selected work</a><a href="mailto:dgallagher33@gmail.com">Email</a></div>
+      <div><button type="button" class="button print-button" data-print-resume hidden>Print / Save as PDF</button><a href="/work/">Selected work</a><a href="mailto:dgallagher33@gmail.com">Email</a></div>
     </div>
     <header class="resume-header">
       <p class="eyebrow">Andrew Gallagher / Product &amp; Systems</p>
       <h1>Andrew Gallagher</h1>
       <p class="resume-headline">Digital Product Manager <span aria-hidden="true">/</span> Technical Product Management <span aria-hidden="true">/</span> Workflow Modernization &amp; Applied AI</p>
-      <p class="resume-summary">Digital Product Manager who progressed from insurance operations through business systems analysis into company-wide product work. Combine practical insurance-domain knowledge with SQL, API, automation and applied AI fluency to translate complex workflows into usable digital systems. Known for bridging business leaders and technical teams, investigating problems directly and leading through cross-functional influence.</p>
+      <p class="resume-summary">Digital Product Manager who progressed from insurance operations through business systems analysis into company-wide product work. Combines practical insurance-domain knowledge with SQL, API, automation and applied AI fluency to translate complex workflows into usable digital systems. Known for bridging business leaders and technical teams, investigating problems directly and leading through cross-functional influence.</p>
       <p class="resume-contact"><a href="mailto:dgallagher33@gmail.com">dgallagher33@gmail.com</a><span aria-hidden="true">·</span><a href="https://github.com/dgallagher33" rel="me">github.com/dgallagher33</a><span aria-hidden="true">·</span><a href="/">andrewgallagher.net</a></p>
     </header>
     <section class="resume-section" aria-labelledby="resume-highlights"><h2 id="resume-highlights">Selected impact</h2>
@@ -31,4 +31,11 @@ import '../../styles/resume.css';
     </section>
     <p class="resume-note">Professional experience above reflects collaborative contributions. Approximate operating metrics are identified as such; estimated annualized time savings are not presented as verified results.</p>
   </article>
+<script>
+  const printControl=document.querySelector<HTMLButtonElement>('[data-print-resume]');
+  if(printControl){
+    printControl.hidden=false;
+    printControl.addEventListener('click',()=>window.print());
+  }
+</script>
 </ProjectLayout>

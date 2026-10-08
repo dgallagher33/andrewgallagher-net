@@ -1,0 +1,12 @@
+---
+const identity = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: 'Andrew Gallagher',
+  jobTitle: 'Digital Product Manager',
+  worksFor: { '@type': 'Organization', name: 'McNeil & Company' },
+  sameAs: ['https://github.com/dgallagher33'],
+  description: 'Product management, insurance workflow modernization, technical systems, data integration and applied AI.'
+};
+---
+<script type="application/ld+json" set:html={JSON.stringify(identity)} />

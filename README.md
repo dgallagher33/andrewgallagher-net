@@ -59,3 +59,17 @@ The site now includes standalone routes for `/resume/`, `/work/`, `/projects/`, 
 **Content and interaction:** Professional cases remain sourced in `src/data/career.ts` and rendered by `CareerCases.astro`. The existing `?focus=` query-string reader is preserved. The notice workflow comparison is conceptual, not an operational blueprint. The AI Sysadmin narrative does not expose private infrastructure access details.
 
 **Development checks:** run `npm ci`, `npm run check` (if Astro's checker is installed), and `npm run build`. Review keyboard access, narrow viewport overflow, reduced motion and the résumé in US Letter print preview. GitHub Actions builds PRs, but publishes generated site files to `deploy` only after merging to `main`.
+
+## Interactive systems / accessibility
+
+The homepage renders `SystemsNetwork.astro` as an SVG map of professional capabilities with links to real portfolio content. Hover and keyboard focus update a short preview; activating a node follows the link. If JavaScript is disabled, every SVG link still works and the static introduction remains readable.
+
+`GaiaExplorer.astro` and `src/data/gaia.ts` describe a public, conceptual view of Gaia's architecture. Node links jump to in-page descriptions without JavaScript. With scripting available, selection narrows the view to one node. This is **not live infrastructure data** and must never include private hostnames, control endpoints or permission configuration.
+
+Theme selection is implemented by `ThemeToggle.astro`, `src/scripts/theme.ts`, and `src/styles/theme.css`. The site uses system appearance unless a visitor explicitly selects and stores light/dark mode in their browser. Maintain print styles and reduced-motion behavior when extending the system. `src/styles/systems.css` owns the diagram and explorer presentation; `src/scripts/systems.ts` owns their progressive enhancements.
+
+**Live revision identifier:** The build step supplies `PUBLIC_BUILD_SHA` from the GitHub commit. `BuildRevision.astro` displays its short SHA in the static footer. For a completed deployment, compare that label with the commit built for `main` to distinguish stale SPanel output from stale source. Local builds omit the label unless the variable is supplied; no private secrets are used.
+
+The professional workflow page uses `src/scripts/process.ts` for optional Before / After / Compare controls. Both conceptual stages remain visible without JavaScript and when printed.
+
+The landing diagram uses a full-size two-column link grid below 520px rather than compressing SVG labels to unreadable sizes. Each link leads to the same evidence-backed page. Shared `PersonMetadata.astro` emits basic professional structured data only; canonical/sitemap URLs are intentionally omitted until the production hostname is confirmed.

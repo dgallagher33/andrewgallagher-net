@@ -45,3 +45,10 @@ The detailed page uses project conversation context in addition to the career so
 | Home Assistant OS hosted on Fuji | Existing portfolio node description and established homelab context. |
 
 The scenario walkthrough presents intended behavior and acceptance criteria. It is illustrative and does not connect to or operate the home. Design implications, such as separating scene selection from current output or distinguishing device ownership from presentation, are explained as reasoning rather than measured outcomes.
+
+## Systems in Motion visualization evidence
+
+- The six concepts shown in the animated hero are editorial groupings tied to existing cases, not a claim about a specific implementation or real-time data feed.
+- The Gaia layer overview and Sierra/K2/Fuji/Olympus summaries derive from the existing homelab portfolio and user-reported project history. It is intentionally conceptual and excludes private network hostnames, IP addresses and credential scopes.
+- The Proxmox 8-to-9 migration and Ollama acceleration maintenance remain reported completed work; NanoKVM emergency console access is a **plan**, not a verified disaster recovery test.
+- Animation is visual presentation only. Motion is suppressed for reduced-motion visitors; content and primary links remain accessible as static markup without JavaScript.

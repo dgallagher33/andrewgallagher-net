@@ -1,0 +1,21 @@
+---
+import {gaiaNodes, architectureLayers} from '../data/gaia';
+---
+<section class="gaia-explorer" id="gaia-architecture" data-gaia-explorer aria-labelledby="gaia-heading">
+  <div class="gaia-heading"><div><p class="eyebrow">Interactive architecture / Not live telemetry</p><h3 id="gaia-heading">One lab. Several layers.</h3></div><p>Four compute nodes connected by deliberate choices about access, identity, observability and recovery. Select a node to inspect its role.</p></div>
+  <div class="gaia-layer-grid" aria-label="Shared infrastructure">
+    {architectureLayers.map(layer => (
+      <div class="gaia-layer"><span>{layer.name}</span><strong>{layer.elements}</strong><p>{layer.meaning}</p></div>
+    ))}
+  </div>
+  <div class="gaia-node-selector"><p class="eyebrow">Compute / Select a node</p><nav class="gaia-node-nav" aria-label="Gaia compute nodes">
+    {gaiaNodes.map(node=><a class="gaia-node-link" data-gaia-select={node.id} href={`#gaia-${node.id}`}><span class="gaia-node-dot" aria-hidden="true"></span><strong>{node.name}</strong><span>{node.role}</span></a>)}
+  </nav></div>
+  <div class="gaia-panels" aria-label="Compute node details" aria-live="off">
+    {gaiaNodes.map(node=><article class="gaia-panel" id={`gaia-${node.id}`} data-gaia-panel={node.id} aria-labelledby={`gaia-${node.id}-heading`}>
+      <div><p class="eyebrow">GAIA / {node.hardware}</p><h4 id={`gaia-${node.id}-heading`}>{node.name}</h4><p class="gaia-node-role">{node.role}</p><p>{node.summary}</p>{node.link&&<a class="evo-link" href={node.link}>Read the related project →</a>}</div>
+      <div class="gaia-panel-aside"><h5>Core responsibilities</h5><ul>{node.capabilities.map(item=><li>{item}</li>)}</ul><h5>Systems lesson</h5><p>{node.lesson}</p></div>
+    </article>)}
+  </div>
+  <p class="gaia-disclaimer">Architectural illustration only. No live host state, internal URLs, credentials or privileged configuration are exposed.</p>
+</section>
