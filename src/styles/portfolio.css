@@ -57,3 +57,10 @@ h1{font-size:clamp(3rem,4.7vw,4.5rem);line-height:1.06;letter-spacing:-.05em}
 
 /* Motion as feedback, never as a prerequisite to comprehension. */
 .home-cta-row{text-align:right;padding:18px 0 0}.hero{position:relative}.hero:before{content:"";pointer-events:none;position:absolute;top:30px;left:20%;width:30vw;height:30vw;background:radial-gradient(circle,#cbe0ff99,transparent 70%);filter:blur(22px);z-index:-1}.case-card{transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease}.case-card:hover{transform:translateY(-3px);box-shadow:0 20px 35px #111e3510;border-color:#9bb7df}.journey-grid li{transition:border-color .3s ease}.journey-grid li[data-in-view]{border-color:#184edc}.scroll-progress{position:fixed;inset:0 auto auto 0;height:3px;z-index:30;width:0;background:var(--blue);pointer-events:none}@media(prefers-reduced-motion:reduce){.case-card,.journey-grid li{transition:none}.case-card:hover{transform:none}}@media print{.scroll-progress{display:none}}
+
+/* Career context from verified LinkedIn chronology and earlier technical experience. */
+.career-roots{margin-top:34px;padding:25px 29px;border-left:3px solid var(--blue);background:var(--light)}
+.career-roots .eyebrow{margin-bottom:12px}.career-roots p:not(.eyebrow){max-width:85ch;color:var(--muted);margin:0 0 12px}
+.career-roots p:last-child{margin-bottom:0}.career-roots a{color:var(--blue);font-weight:700;text-decoration:underline;text-underline-offset:3px}
+@media(max-width:760px){.career-roots{padding:20px}}
+@media print{.career-roots{break-inside:avoid}}

@@ -1,4 +1,13 @@
-/** Public résumé content. Dates without independent confirmation stay intentionally broad. */
+/**
+ * Public career summary.
+ *
+ * LinkedIn export supplied October 2026 supplies employment chronology,
+ * education, prior roles and LinkedIn-listed credentials. The earlier
+ * interview evidence bank supplies responsibilities and reported outcomes.
+ * See docs/content-evidence.md for the distinction.
+ */
+export const linkedinUrl = 'https://www.linkedin.com/in/ajgallag/';
+
 export interface Experience {
   title: string;
   organization: string;
@@ -6,12 +15,24 @@ export interface Experience {
   context: string;
   bullets: string[];
 }
+export interface CareerEntry {
+  title: string;
+  organization: string;
+  period: string;
+  description: string;
+}
+export interface EducationEntry {
+  institution: string;
+  degree: string;
+  period: string;
+}
+
 export const experience: Experience[] = [
   {
     title: 'Digital Product Manager',
     organization: 'McNeil & Company',
-    period: 'Selected for product management in 2020 · Present',
-    context: 'Company-wide digital product planning and modernization across insurance operations.',
+    period: 'March 2020 – Present',
+    context: 'Company-wide digital product planning and insurance workflow modernization.',
     bullets: [
       'Coordinate a recurring planning cadence spanning approximately 50 stakeholders and 12 meetings every three weeks; clarify priorities, dependencies, business intent, and follow-through.',
       'Shape the backlog and requirements in partnership with business leaders, analysts, developers, vendors, and IT leadership; contribute to refinement, testing, and release decisions.',
@@ -22,42 +43,113 @@ export const experience: Experience[] = [
     ]
   },
   {
-    title: 'Business Analyst — IT',
+    title: 'Business Analyst',
     organization: 'McNeil & Company',
-    period: 'Prior to product management · Dates to be confirmed',
-    context: 'Bridged insurance business systems and technical delivery.',
+    period: 'August 2019 – March 2020',
+    context: 'Insurance business systems and process improvement, including collaboration with the parent-company business process management team.',
     bullets: [
-      'Investigated Concept One and related insurance workflows through SQL Server queries, database logic, reporting, and process analysis.',
-      'Developed and optimized complex SQL logic and workflows; improved a key notice-identification process from approximately 20 minutes to about one minute.',
-      'Tested and troubleshot vendor API integrations, collaborating with developers and operational stakeholders.'
+      'Partnered on an underwriting process overhaul with the Business Process Management team at Arch Capital Group.',
+      'Investigated ConceptOne insurance workflows through Microsoft SQL Server, Infomaker (Sybase), reporting, database logic, and process analysis.',
+      'Developed and optimized complex SQL logic and workflows; a key notice-identification process later improved from approximately 20 minutes to about one minute.',
+      'Tested and troubleshot vendor API integrations in collaboration with developers and business stakeholders.'
     ]
   },
   {
-    title: 'Underwriting Rater / Underwriting Assistant',
+    title: 'Commercial Lines Underwriting Assistant',
     organization: 'McNeil & Company',
-    period: 'Earlier career · Dates to be confirmed',
-    context: 'Hands-on pricing, endorsements, underwriting data, and proposal support.',
+    period: 'February 2017 – August 2019',
+    context: 'Hands-on rating, policy endorsements, exposure data and proposal support.',
     bullets: [
-      'Supported policy pricing and changes across insurance products and lines of business.',
-      'Built an Excel/VBA pricing calculator for modification-factor and rating scenarios, accurate to within cents; this practical tooling helped open a path into IT.'
+      'Supported pricing and policy changes across commercial insurance lines, developing familiarity with underwriting rules and operational needs.',
+      'Built an Excel/VBA pricing calculator for modification-factor and rating scenarios, accurate to within cents; the practical tooling helped establish a pathway into IT.'
     ]
   },
   {
     title: 'Policy Analyst',
     organization: 'McNeil & Company',
-    period: 'Earlier career · Dates to be confirmed',
-    context: 'Foundation in policy operations, forms, coverage accuracy, and quality control.',
+    period: 'April 2016 – February 2017',
+    context: 'Policy operations, issuance, forms, coverage accuracy and quality control.',
     bullets: [
-      'Worked with policy issuance, coverage details, forms, and underwriting information.',
-      'Developed first-hand familiarity with the manual processes and accuracy requirements later addressed through technology.'
+      'Worked with policy issuance, coverage details, forms and underwriting information.',
+      'Developed first-hand familiarity with the manual workflows and accuracy requirements later addressed through technology.'
     ]
   }
 ];
+
+export const earlierTechnicalExperience: CareerEntry[] = [
+  {
+    title: 'Easy Tech Certified Technician',
+    organization: 'Staples',
+    period: 'January 2013 – April 2016',
+    description: 'Diagnosed and repaired computers, explained technical problems to customers, and matched services to actual needs.'
+  },
+  {
+    title: 'Helpdesk Technician',
+    organization: 'SUNY Potsdam',
+    period: 'March 2012 – December 2012',
+    description: 'Troubleshot faculty and student issues, supported classroom incidents and tracked requests in a ticketing system.'
+  },
+  {
+    title: 'Bench Technician',
+    organization: 'Plan First Technologies, Inc.',
+    period: 'March 2010 – August 2011',
+    description: 'Maintained and repaired business-client computers and assisted with onsite server and system implementations.'
+  }
+];
+
+export const additionalExperience: CareerEntry[] = [
+  {
+    title: 'Marketing Assistant',
+    organization: "Biel's Document Management",
+    period: 'January 2016 – July 2016',
+    description: 'Content marketing, communication review, and collaboration with sales.'
+  },
+  {
+    title: 'Marketing Intern',
+    organization: "Biel's Document Management",
+    period: 'September 2015 – December 2015',
+    description: 'B2B lead research and digital marketing content.'
+  },
+  {
+    title: 'Crew Member',
+    organization: "The Wendy's Company",
+    period: 'March 2010 – August 2012',
+    description: 'High-volume customer operations, equipment upkeep, and balancing demand and waste.'
+  }
+];
+
+export const education: EducationEntry[] = [
+  {
+    institution: 'University at Buffalo',
+    degree: "Bachelor's Degree, Business Administration",
+    period: '2014 – 2015'
+  },
+  {
+    institution: 'Tompkins Cortland Community College',
+    degree: 'Associate of Science (A.S.), General Studies',
+    period: '2013 – 2014'
+  }
+];
+
+/** Descriptions copied or normalized from LinkedIn. Issuer/date are not established. */
+export const listedCertification = 'A+';
+export const professionalLearning: string[] = [
+  'Building in Microsoft Copilot Studio',
+  'Build Your Generative AI Productivity Skills with Microsoft and LinkedIn',
+  'Microsoft Loop: AI-Enhanced Project Management and Note-Taking',
+  'Blazor Hybrid Development with .NET'
+];
+
+export const languages = [
+  'English (native or bilingual)',
+  'Spanish (elementary)'
+];
+
 export const skills = [
-  { heading: 'Product & delivery', items: 'Cross-functional planning, backlog prioritization, stakeholder facilitation, requirements refinement, process design, UAT, Jira' },
-  { heading: 'Data & integration', items: 'Microsoft SQL Server, complex queries and procedures, API testing, Postman, data analysis, workflow automation' },
+  { heading: 'Product & delivery', items: 'Cross-functional product planning, backlog prioritization, stakeholder facilitation, requirements refinement, process design, UAT, Jira' },
+  { heading: 'Data & integration', items: 'Microsoft SQL Server, complex queries and procedures, ConceptOne, Infomaker (Sybase), API testing, Postman, data analysis, workflow automation' },
   { heading: 'Development foundations', items: 'Advanced Excel/VBA, classes and add-ins, reusable internal tools, Git, TypeScript/web fundamentals, programming concepts' },
-  { heading: 'Applied AI', items: 'Copilot workflows, internal AI enablement, governance partnership, agent operations, local language models' },
+  { heading: 'Applied AI', items: 'Copilot workflows, AI enablement, governance partnership, agent operations, local language models' },
   { heading: 'Personal infrastructure', items: 'Linux, Proxmox, containers, networking, Cloudflare, Authentik, observability, backups, GPU passthrough' }
 ];
 export const highlights = [

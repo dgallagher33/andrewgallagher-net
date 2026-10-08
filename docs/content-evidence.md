@@ -27,7 +27,7 @@ Existing homelab content, node descriptions, identity work, home automation, and
 - Omit the estimated pricing-calculator savings and fishing-guide revenue/effort figures pending validation.
 - Do not invent adoption, error-reduction, throughput, or time-savings metrics for qualitative results.
 - Java is a programming foundation, not claimed current professional proficiency.
-- Do not invent exact employment dates or total tenure. The role-selection year is supported, while the exact title-history dates remain open.
+- Employment months/years can now be taken from the supplied LinkedIn profile export, but exact tenure, graduation dates, and certification award dates are not independently verified.
 
 ## Home Assistant project page
 
@@ -52,3 +52,26 @@ The scenario walkthrough presents intended behavior and acceptance criteria. It 
 - The Gaia layer overview and Sierra/K2/Fuji/Olympus summaries derive from the existing homelab portfolio and user-reported project history. It is intentionally conceptual and excludes private network hostnames, IP addresses and credential scopes.
 - The Proxmox 8-to-9 migration and Ollama acceleration maintenance remain reported completed work; NanoKVM emergency console access is a **plan**, not a verified disaster recovery test.
 - Animation is visual presentation only. Motion is suppressed for reduced-motion visitors; content and primary links remain accessible as static markup without JavaScript.
+
+## LinkedIn profile export: chronology and credentials (October 2026)
+
+A three-page Profile.pdf was supplied directly by the owner as an export of his LinkedIn profile. **This is a self-reported source, not independent employer, registrar, or certification-issuer verification.** Neither the raw PDF nor its outdated mailing address are published or committed.
+
+| Public content | Profile page | Presentation and cautions |
+| --- | --- | --- |
+| Digital Product Manager, March 2020–present | 1 | Formal role title and start month; shared strategic authority remains grounded in the detailed career interview |
+| Business Analyst, August 2019–March 2020 | 1 | Includes collaboration with Arch Capital Group's Business Process Management team; SQL, Infomaker (Sybase) and ConceptOne |
+| Commercial Lines Underwriting Assistant, February 2017–August 2019 | 1 | LinkedIn formal title; rating responsibilities and Excel/VBA calculator supported by interview evidence |
+| Policy Analyst, April 2016–February 2017 | 1 | Formal role dates |
+| Staples Easy Tech, January 2013–April 2016 | 2 | Customer computer repair and troubleshooting |
+| SUNY Potsdam Helpdesk, March–December 2012 | 2 | Campus troubleshooting and ticketing |
+| Plan First Technologies Bench Technician, March 2010–August 2011 | 3 | Business computer support, assistance with server and system implementations |
+| Biel's Document Management, marketing internship and assistant roles | 1–2 | Listed separately with their respective dates |
+| The Wendy's Company, March 2010–August 2012 | 3 | Condensed additional experience |
+| University at Buffalo, Bachelor's Degree in Business Administration, 2014–2015 | 3 | Degree and profile-listed years; do not assume a separately verified graduation date |
+| Tompkins Cortland Community College, A.S. General Studies, 2013–2014 | 3 | Degree and profile-listed years; no unsupported graduation date |
+| A+ and four professional development items | 1 | Issuers and award dates are absent from the export |
+| English and Spanish proficiency | 1 | The profile lists English native/bilingual and Spanish elementary |
+| Professional LinkedIn URL | 1 | Profile path as shown in the supplied PDF |
+
+Editorial boundaries: Retain Digital Product Manager as the actual title; Senior or Technical Product Manager are target positions, not titles held. LinkedIn's broad descriptions of roadmap strategy do not supersede interview details about shared authority. Earlier technical roles strengthen the story without implying exclusive/full-time sequencing where dates overlap. Do not publish the outdated address, raw PDF, career interview artifacts or sensitive personal information. A+ is shown exactly as listed; do not infer the issuer or current certification status without confirmation.
