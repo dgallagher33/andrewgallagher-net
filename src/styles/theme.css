@@ -26,3 +26,9 @@
 @media(max-width:760px){nav.wrap{flex-wrap:wrap;justify-content:space-between;row-gap:10px;height:auto;min-height:76px;padding-top:11px;padding-bottom:11px}.theme-toggle{order:2}.nav-links{order:3;width:100%;justify-content:flex-start;gap:8px 16px}.brand{order:1}}
 @media(max-width:390px){.theme-toggle{padding:8px 10px}.theme-toggle [data-theme-label]{display:none}.nav-links{gap:7px 11px}}
 @media print{:root[data-theme='dark']{--ink:#111;--muted:#333;--blue:#184edc;--line:#ccc;--paper:#fff;--light:#fff}:root[data-theme='dark'] body{background:#fff!important;color:#111!important}.theme-toggle{display:none!important}}
+
+:root[data-theme='dark'] .ha-brief{background:#1a304f;color:#eef3ff}
+:root[data-theme='dark'] .ha-scenario-controls button{background:#182b47;color:#eef3ff}
+:root[data-theme='dark'] .ha-scenario-controls button[aria-pressed=true]{background:#245eab;color:#fff;border-color:#86b5ff}
+:root[data-theme='dark'] .process-controls button[aria-pressed=true]{background:#245eab;color:white}
+:root[data-theme='dark'] .ha-brief h2{color:white}
