@@ -1,0 +1,13 @@
+---
+import ProjectLayout from '../../layouts/ProjectLayout.astro';
+import '../../styles/evolution.css';
+const projects = [
+ {url:'/projects/ai-sysadmin/',number:'01',title:'AI Sysadmin',topic:'AI / Operations',description:'Scoped AI assistance in a multi-node Proxmox environment; a major version upgrade, backup strategy and GPU workload recovery.'},
+ {url:'/projects/home-assistant/',number:'02',title:'Home Assistant',topic:'Experience / Automation',description:'Smart lighting, intentional scene selection, physical controls and the details behind predictable behavior.'},
+ {url:'/#projects',number:'03',title:'Gaia homelab',topic:'Infrastructure / Systems',description:'Compute, storage, networking, identity, observability and the decisions that connect them.'}
+];
+---
+<ProjectLayout title="Technical projects" description="AI systems, Proxmox, home automation and practical infrastructure projects by Andrew Gallagher.">
+ <div class="wrap subpage-hero"><p class="eyebrow">Lab notebook / 02</p><h1>Curiosity in<br/><span>production.</span></h1><p class="intro">Personal experiments with real dependencies, tradeoffs, failure modes and maintenance. The point is not a collection of tools; it's the thinking involved in making systems work together.</p></div>
+ <section class="wrap project-library" aria-label="Technical project index">{projects.map(project=><a class="library-card" href={project.url}><span class="eyebrow">{project.number} / {project.topic}</span><h2>{project.title}</h2><p>{project.description}</p><span aria-hidden="true">Explore project ↗</span></a>)}</section>
+</ProjectLayout>

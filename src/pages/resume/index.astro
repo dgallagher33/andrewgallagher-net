@@ -1,0 +1,34 @@
+---
+import ProjectLayout from '../../layouts/ProjectLayout.astro';
+import { experience, skills, highlights } from '../../data/resume';
+import '../../styles/resume.css';
+---
+<ProjectLayout title="Résumé | Digital Product Manager" description="Andrew Gallagher's résumé: insurance product management, business systems, SQL, API modernization, applied AI and hands-on systems experience.">
+  <article class="resume-page wrap" id="resume">
+    <div class="resume-actions" aria-label="Résumé actions">
+      <span class="eyebrow">Professional résumé</span>
+      <div><button type="button" class="button print-button" onclick="window.print()">Print / Save as PDF</button><a href="/work/">Selected work</a><a href="mailto:dgallagher33@gmail.com">Email</a></div>
+    </div>
+    <header class="resume-header">
+      <p class="eyebrow">Andrew Gallagher / Product &amp; Systems</p>
+      <h1>Andrew Gallagher</h1>
+      <p class="resume-headline">Digital Product Manager <span aria-hidden="true">/</span> Technical Product Management <span aria-hidden="true">/</span> Workflow Modernization &amp; Applied AI</p>
+      <p class="resume-summary">Digital Product Manager who progressed from insurance operations through business systems analysis into company-wide product work. Combine practical insurance-domain knowledge with SQL, API, automation and applied AI fluency to translate complex workflows into usable digital systems. Known for bridging business leaders and technical teams, investigating problems directly and leading through cross-functional influence.</p>
+      <p class="resume-contact"><a href="mailto:dgallagher33@gmail.com">dgallagher33@gmail.com</a><span aria-hidden="true">·</span><a href="https://github.com/dgallagher33" rel="me">github.com/dgallagher33</a><span aria-hidden="true">·</span><a href="/">andrewgallagher.net</a></p>
+    </header>
+    <section class="resume-section" aria-labelledby="resume-highlights"><h2 id="resume-highlights">Selected impact</h2>
+      <div class="resume-highlights">{highlights.map(item => <div><strong>{item.metric}</strong><p>{item.description}</p></div>)}</div>
+    </section>
+    <section class="resume-section" aria-labelledby="resume-experience"><h2 id="resume-experience">Professional experience</h2>
+      <div class="resume-experience">{experience.map(role => <section class="resume-role"><div class="resume-role-head"><h3>{role.title}</h3><p>{role.period}</p></div><p class="resume-organization">{role.organization} · {role.context}</p><ul>{role.bullets.map(bullet => <li>{bullet}</li>)}</ul></section>)}</div>
+    </section>
+    <section class="resume-section" aria-labelledby="resume-skills"><h2 id="resume-skills">Capabilities</h2>
+      <div class="resume-skills">{skills.map(group => <div><h3>{group.heading}</h3><p>{group.items}</p></div>)}</div>
+    </section>
+    <section class="resume-section resume-links" aria-labelledby="resume-selected"><h2 id="resume-selected">Selected work &amp; projects</h2>
+      <p><a href="/work/#notice-automation">Regulatory notice modernization</a> · <a href="/work/#portal-strategy">Shared portal strategy</a> · <a href="/work/#ai-adoption">AI enablement</a></p>
+      <p><a href="/projects/ai-sysadmin/">AI-assisted Proxmox operations</a> · <a href="/projects/home-assistant/">Home Assistant interaction design</a></p>
+    </section>
+    <p class="resume-note">Professional experience above reflects collaborative contributions. Approximate operating metrics are identified as such; estimated annualized time savings are not presented as verified results.</p>
+  </article>
+</ProjectLayout>
