@@ -1,0 +1,42 @@
+name: Validate Astro site
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main, staging]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.workflow }-${{ github.event.pull_request.number || github.ref }
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: build-and-check
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out source
+        uses: actions/checkout@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - name: Install locked dependencies
+        run: npm ci
+      - name: Build Astro
+        env:
+          PUBLIC_BUILD_SHA: ${{ github.sha }
+        run: npm run build
+      - name: Validate generated routes and local links
+        run: npm run verify:dist
+      - name: Build Cloudflare preview variant
+        run: npm run build:preview
+      - name: Validate preview noindex headers
+        env:
+          EXPECT_PREVIEW_HEADERS: '1'
+        run: npm run verify:dist

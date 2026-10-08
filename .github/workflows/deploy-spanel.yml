@@ -1,62 +1,45 @@
-name: Build Astro site and publish for SPanel
+name: Publish Astro to SPanel deploy branch
 
 on:
   push:
     branches: [main]
-    paths:
-      - "src/**"
-      - "public/**"
-      - "astro.config.*"
-      - "package.json"
-      - "package-lock.json"
-      - "tsconfig.json"
-      - ".github/workflows/deploy-spanel.yml"
-  pull_request:
-    branches: [main]
-    paths:
-      - "src/**"
-      - "public/**"
-      - "astro.config.*"
-      - "package.json"
-      - "package-lock.json"
-      - "tsconfig.json"
-      - ".github/workflows/deploy-spanel.yml"
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
 
 concurrency:
-  group: spanel-astro-site
-  cancel-in-progress: true
+  group: deploy-production
+  cancel-in-progress: false
 
 jobs:
-  build:
+  publish:
+    name: build-and-publish
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - name: Check out source
         uses: actions/checkout@v4
-
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 22
+          node-version: '22'
           cache: npm
-
-      - name: Install dependencies
+      - name: Install locked dependencies
         run: npm ci
-
-      - name: Build static Astro site
+      - name: Build production site
         env:
-          PUBLIC_BUILD_SHA: ${{ github.sha }}
+          PUBLIC_BUILD_SHA: ${{ github.sha }
         run: npm run build
-
-      - name: Publish deploy branch
-        if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+      - name: Validate generated site
+        run: npm run verify:dist
+      - name: Publish production artifact to deploy branch
         uses: peaceiris/actions-gh-pages@v4
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          github_token: ${{ secrets.GITHUB_TOKEN }
           publish_dir: ./dist
           publish_branch: deploy
-          # Preserve deploy history so SPanel can update with a normal Git pull.
           force_orphan: false
+          # SPanel is responsible for pulling its checkout and serving the
+          # generated files. This job does NOT SSH to the production server.
