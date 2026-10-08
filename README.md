@@ -49,3 +49,13 @@ Add or update interaction walkthroughs and future research directions in `src/da
 
 Keep setup observations, intended interactions, acceptance checks, and future research clearly distinguished as this project grows. Add measured or verified results only when supported by new evidence.
 
+
+## Systems in Motion expansion
+
+The site now includes standalone routes for `/resume/`, `/work/`, `/projects/`, and `/projects/ai-sysadmin/`, using `src/layouts/ProjectLayout.astro` and lightweight shared styling in `src/styles/evolution.css`. The existing Home Assistant deep dive remains intact.
+
+**Résumé maintenance:** edit `src/data/resume.ts` for experience, skills, and validated highlights; the page template is `src/pages/resume/index.astro`, with dedicated screen/print styling in `src/styles/resume.css`. Visitors can use the browser's Print / Save as PDF action. Do not present estimates as audited results; update `docs/content-evidence.md` when evidence changes.
+
+**Content and interaction:** Professional cases remain sourced in `src/data/career.ts` and rendered by `CareerCases.astro`. The existing `?focus=` query-string reader is preserved. The notice workflow comparison is conceptual, not an operational blueprint. The AI Sysadmin narrative does not expose private infrastructure access details.
+
+**Development checks:** run `npm ci`, `npm run check` (if Astro's checker is installed), and `npm run build`. Review keyboard access, narrow viewport overflow, reduced motion and the résumé in US Letter print preview. GitHub Actions builds PRs, but publishes generated site files to `deploy` only after merging to `main`.
