@@ -1,0 +1,60 @@
+/* Systems in Motion / SVG relationship map and public homelab architecture explorer. */
+.systems-network{margin:0;position:relative;isolation:isolate;overflow:hidden;border:1px solid #324d78;border-radius:18px;background:radial-gradient(ellipse at 72% -20%,#31579f80,transparent 56%),linear-gradient(145deg,#121f39,#0a152b);color:#f5f8ff;box-shadow:0 24px 60px #0e214b20}
+.systems-network-heading{display:flex;justify-content:space-between;gap:10px;padding:20px 24px 0;font:.69rem/1.4 ui-monospace,Consolas,monospace;letter-spacing:.08em;color:#adcaef}
+.systems-network-heading span:last-child{letter-spacing:0;color:#d6e2ff}
+.systems-network svg{width:100%;height:auto;display:block;margin:-2px auto -14px;color:#5686bd}
+.system-connections path{fill:none;stroke:url(#systems-flow);stroke-width:1.5;stroke-opacity:.65;stroke-dasharray:5 9;animation:network-flow 20s linear infinite}
+.network-pulse{fill:#b0d8ff;filter:drop-shadow(0 0 7px #70aafe);opacity:.9;transform-origin:center;animation:node-pulse 3s ease-in-out infinite}
+.pulse-two{animation-delay:1.3s}
+.system-node{cursor:pointer;outline:none}
+.system-node rect{fill:#1c3356;stroke:#456d9e;stroke-width:1;transition:fill .2s ease,stroke .2s ease}
+.system-node circle{fill:#70aeff;transition:fill .2s ease}
+.system-node-name{font:600 19px/1 Arial,Helvetica,sans-serif;fill:#fff}
+.system-node-sub{font:14px/1 ui-monospace,Consolas,monospace;fill:#b9cce5}
+.system-node:hover rect,.system-node:focus rect,.system-node.is-active rect{fill:#28579b;stroke:#94c5ff;stroke-width:2}
+.system-node:hover circle,.system-node:focus circle,.system-node.is-active circle{fill:#c6e5ff}
+.system-node:focus-visible rect{stroke:#ffc98d;stroke-width:4}
+.systems-network-detail{min-height:168px;padding:22px 25px 21px;border-top:1px solid #345072;background:#111f38e8}
+.systems-network-detail .eyebrow{color:#aac5e9;font-size:.68rem;margin:0 0 4px}
+.systems-network-detail strong{display:block;font-size:1.1rem}
+.systems-network-detail p{margin:5px 0 0;color:#d2e1f3;font-size:.86rem;line-height:1.55}
+.systems-network-detail .systems-network-hint{font:.7rem/1.5 ui-monospace,Consolas,monospace;color:#a8c6ed;margin-top:12px}
+@keyframes network-flow{to{stroke-dashoffset:-140}}
+@keyframes node-pulse{50%{opacity:.45;transform:scale(1.8)}}
+.gaia-explorer{border:1px solid var(--line);background:var(--light);padding:35px;margin:10px 0 64px;scroll-margin-top:6rem}
+.gaia-heading{display:grid;grid-template-columns:1.1fr 1fr;gap:35px;align-items:end;margin-bottom:28px}
+.gaia-heading .eyebrow{margin-bottom:8px}.gaia-heading h3{font-size:clamp(1.75rem,3vw,2.7rem);line-height:1.1;letter-spacing:-.04em;margin:0}
+.gaia-heading>p{color:var(--muted);font-size:.95rem;max-width:440px;margin:0}
+.gaia-layer-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:9px;position:relative}
+.gaia-layer{border:1px solid #3c567e;background:#182945;color:#eef6ff;padding:17px 15px;min-height:153px}
+.gaia-layer span{font:.69rem ui-monospace,monospace;letter-spacing:.07em;text-transform:uppercase;color:#b4cdff;display:block;margin-bottom:13px}
+.gaia-layer strong{font-size:.9rem;line-height:1.38;display:block}
+.gaia-layer p{margin:8px 0 0;font-size:.78rem;color:#cbd8ed;line-height:1.45}
+.gaia-node-selector{margin-top:30px;position:relative}
+.gaia-node-selector:before{content:"";position:absolute;top:-30px;left:50%;height:20px;border-left:1px dashed var(--blue)}
+.gaia-node-selector .eyebrow{margin-bottom:11px}
+.gaia-node-nav{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.gaia-node-link{padding:17px 13px;display:flex;flex-direction:column;gap:5px;background:var(--paper);color:var(--ink);border:1px solid var(--line);min-width:0;transition:border-color .15s,background .15s,transform .15s;scroll-margin-top:6rem}
+.gaia-node-link strong{font-size:1.15rem;letter-spacing:-.035em}
+.gaia-node-link>span:last-child{font-size:.78rem;color:var(--muted);line-height:1.4}
+.gaia-node-dot{display:block;width:8px;height:8px;background:var(--blue);border-radius:50%;margin-bottom:3px}
+.gaia-node-link:hover{border-color:var(--blue);transform:translateY(-2px)}
+.gaia-node-link[aria-current=true]{border-color:var(--blue);background:var(--paper);box-shadow:inset 0 3px var(--blue)}
+.gaia-panels{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:12px}
+.gaia-panel{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);grid-column:1/-1;gap:35px;padding:28px;border:1px solid var(--line);background:var(--paper);scroll-margin-top:6rem}
+.gaia-panel[hidden]{display:none!important}
+.gaia-panel h4{font-size:2rem;letter-spacing:-.05em;margin:0 0 4px}
+.gaia-panel .eyebrow{margin-bottom:6px}
+.gaia-panel p{margin:0 0 12px;color:var(--muted);font-size:.95rem}
+.gaia-panel .gaia-node-role{color:var(--blue);font-weight:700;margin:0 0 15px}
+.gaia-panel h5{font-size:.85rem;letter-spacing:.02em;margin:0 0 10px}
+.gaia-panel-aside{padding:16px 0 10px 20px;border-left:1px solid var(--line)}
+.gaia-panel-aside ul{margin:0 0 19px;padding-left:20px;font-size:.87rem}
+.gaia-panel-aside li{margin:4px 0}
+.gaia-panel-aside p{font-size:.87rem;line-height:1.5}
+.gaia-disclaimer{font:.71rem/1.55 ui-monospace,Consolas,monospace;color:var(--muted);margin:16px 0 0}
+@media(max-width:1000px){.gaia-layer-grid,.gaia-node-nav{grid-template-columns:repeat(2,minmax(0,1fr))}.gaia-layer{min-height:125px}}
+@media(max-width:760px){.gaia-explorer{padding:20px;margin:8px 0 45px}.gaia-heading{display:block}.gaia-heading>p{margin-top:13px}.gaia-panels{grid-template-columns:1fr}.gaia-panel{grid-template-columns:1fr;gap:14px}.gaia-panel-aside{padding:16px 0 0;border-left:0;border-top:1px solid var(--line)}.systems-network-detail{min-height:170px}}
+@media(max-width:380px){.gaia-node-nav,.gaia-layer-grid{grid-template-columns:1fr}.gaia-layer{min-height:0}.gaia-node-link{min-height:0}.systems-network-heading{flex-direction:column}.systems-network-detail{padding:18px}}
+@media(prefers-reduced-motion:reduce){.system-connections path,.network-pulse{animation:none}.network-pulse{display:none}.system-node rect,.system-node circle,.gaia-node-link{transition:none}.gaia-node-link:hover{transform:none}}
+@media print{.systems-network{box-shadow:none}.gaia-explorer{background:white}.gaia-panels,.gaia-node-nav,.gaia-layer-grid{display:block}.gaia-layer,.gaia-panel{background:white!important;color:#111!important;break-inside:avoid;margin:10px 0}.gaia-panel[hidden]{display:grid!important}.system-connections path{animation:none}}
