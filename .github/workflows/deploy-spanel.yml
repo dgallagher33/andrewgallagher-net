@@ -47,6 +47,8 @@ jobs:
         run: npm ci
 
       - name: Build static Astro site
+        env:
+          PUBLIC_BUILD_SHA: ${{ github.sha }}
         run: npm run build
 
       - name: Publish deploy branch
