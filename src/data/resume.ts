@@ -122,12 +122,12 @@ export const education: EducationEntry[] = [
   {
     institution: 'University at Buffalo',
     degree: "Bachelor's Degree, Business Administration",
-    period: '2014 – 2015 (years listed on LinkedIn)'
+    period: '2014 – 2015'
   },
   {
     institution: 'Tompkins Cortland Community College',
     degree: 'Associate of Science (A.S.), General Studies',
-    period: '2013 – 2014 (years listed on LinkedIn)'
+    period: '2013 – 2014'
   }
 ];
 
