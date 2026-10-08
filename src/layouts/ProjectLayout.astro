@@ -1,6 +1,7 @@
 ---
 import ThemeToggle from '../components/ThemeToggle.astro';
 import BuildRevision from '../components/BuildRevision.astro';
+import PersonMetadata from '../components/PersonMetadata.astro';
 import '../styles/base.css';
 import '../styles/portfolio.css';
 import '../styles/theme.css';
@@ -20,6 +21,7 @@ try {
 }
 </script>
     <meta charset="utf-8" />
+    <PersonMetadata />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>{title} — Andrew Gallagher</title>
     <meta name="description" content={description} />
