@@ -18,3 +18,12 @@
 @media(max-width:760px){.subpage-hero{padding-top:48px;padding-bottom:45px}.project-library,.transform-columns,.architecture-layers{grid-template-columns:1fr}.library-card{min-height:235px}.deep-section{padding:42px 0}.migration-timeline li{grid-template-columns:52px 1fr;gap:14px}.migration-timeline li:before{left:23px}.step-no{width:48px;height:48px}}
 @media(prefers-reduced-motion:reduce){.library-card{transition:none}.library-card:hover{transform:none}}
 @media print{.subpage-hero:before{display:none}.library-card,.transform-columns>div{break-inside:avoid}.deep-section{padding:20px 0}}
+
+/* Comparative process stages are always readable before enhancement. */
+.process-controls{display:flex;flex-wrap:wrap;gap:8px;margin:30px 0 -16px}
+.process-controls[hidden]{display:none!important}
+.process-controls button{min-height:44px;background:var(--paper);color:var(--ink);border:1px solid var(--line);padding:9px 16px;cursor:pointer}
+.process-controls button[aria-pressed=true]{background:#174aa2;color:white;border-color:#174aa2}
+[data-process-current='before'] .transform-columns,[data-process-current='after'] .transform-columns{grid-template-columns:minmax(0,1fr)}
+[data-process-current='before'] [data-process-stage='after'],[data-process-current='after'] [data-process-stage='before']{display:none}
+@media print{.process-controls{display:none!important}[data-process-current] .transform-columns{grid-template-columns:1fr 1fr!important}[data-process-stage]{display:block!important}}
