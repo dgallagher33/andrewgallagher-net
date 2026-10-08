@@ -21,7 +21,7 @@ jobs:
     name: select-staging-commit
     runs-on: ubuntu-latest
     steps:
-      - name: Validate PR and point staging branch to its HEAD
+      - name: Validate PR and move staging branch
         uses: actions/github-script@v7
         with:
           script: |
@@ -37,12 +37,8 @@ jobs:
               return;
             }
             const sha = pr.head.sha;
-            // Staging is a movable pointer to the selected review candidate.
-            // Never update main, deploy, or any production environment here.
-            await github.rest.git.updateRef({
-              owner, repo, ref: 'heads/staging', sha, force: true,
-            });
-            core.summary.addHeading('Staging candidate selected')
-              .addRaw('PR #' + pull_number + ' @ ' + sha + '\\n')
-              .addRaw('Confirm Cloudflare Pages has deployed the staging branch.\\n')
+            await github.rest.git.updateRef({ owner, repo, ref: 'heads/staging', sha, force: true });
+            await core.summary.addHeading('Staging selected')
+              .addRaw('PR #' + pull_number + ' @ ' + sha + '\n')
+              .addRaw('Confirm the corresponding Cloudflare Pages build completed.\n')
               .write();

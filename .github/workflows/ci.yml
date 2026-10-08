@@ -11,7 +11,7 @@ permissions:
   contents: read
 
 concurrency:
-  group: ci-${{ github.workflow }-${{ github.event.pull_request.number || github.ref }
+  group: ci-${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
   cancel-in-progress: true
 
 jobs:
@@ -19,24 +19,22 @@ jobs:
     name: build-and-check
     runs-on: ubuntu-latest
     steps:
-      - name: Check out source
-        uses: actions/checkout@v4
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
           node-version: '22'
           cache: npm
-      - name: Install locked dependencies
+      - name: Install dependencies
         run: npm ci
-      - name: Build Astro
+      - name: Build static site
         env:
-          PUBLIC_BUILD_SHA: ${{ github.sha }
+          PUBLIC_BUILD_SHA: ${{ github.sha }}
         run: npm run build
-      - name: Validate generated routes and local links
+      - name: Validate generated site
         run: npm run verify:dist
-      - name: Build Cloudflare preview variant
+      - name: Build preview variant
         run: npm run build:preview
-      - name: Validate preview noindex headers
+      - name: Validate preview headers and site
         env:
           EXPECT_PREVIEW_HEADERS: '1'
         run: npm run verify:dist
