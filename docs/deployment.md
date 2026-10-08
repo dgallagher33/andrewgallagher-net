@@ -25,9 +25,9 @@ No website secret, server SSH key, or Cloudflare API token is required in GitHub
 1. Cloudflare dashboard → Workers & Pages → Create a Pages project → Connect to Git.
 2. Authorize only `dgallagher33/andrewgallagher-net` when selecting repositories, if offered.
 3. Project name suggestion: `andrewgallagher-portfolio-preview`.
-4. Select production branch **staging** (not `main` or `deploy`).
+4. Set this **Cloudflare Pages project's** production branch to **`main`**. It is only the Pages project's technical default, not the live website: the actual public production site remains SPanel. The **`staging`** branch stays a Cloudflare Pages preview branch and can be aliased safely.
 5. Framework: Astro; Node.js version 22; build command: **`npm run build:preview`**; build output: **`dist`**; root directory: repository root.
-6. Enable automatic preview builds for other branches. Cloudflare should post a preview URL and status on each PR; branch previews may be disabled for forks.
+6. Enable automatic preview builds for **all non-production branches**, including `staging` and feature/recovery branches. Cloudflare should post a preview URL and status on each PR; branch previews may be disabled for forks.
 7. On the Pages project, Custom Domains → add `test.andrewgallagher.net`, then edit Cloudflare DNS so its **proxied** CNAME target points to `staging.<your-project>.pages.dev`. A DNS-only CNAME will NOT select the staging branch.
 8. Verify HTTPS, mobile view, scripts, links, and the response header `X-Robots-Tag: noindex, nofollow, noarchive`. The header is generated only by `build:preview`; production `npm run build` must not emit `_headers`.
 9. Optional: add Cloudflare Access to limit review traffic. Never publish nonpublic employer or homelab secrets, even on a protected preview.

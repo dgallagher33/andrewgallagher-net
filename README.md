@@ -2,18 +2,17 @@
 
 Personal portfolio site built with Astro.
 
-## Update and publish
+## Update, preview and publish (October 2026 recovery)
 
-1. Edit the page and homelab content in `src/pages/index.astro`, professional case studies in `src/data/career.ts`, and styles in `src/styles/base.css` / `src/styles/portfolio.css`.
-2. Push changes to `main`.
-3. GitHub Actions installs the locked dependencies, runs `npm run build`, and publishes Astro's `dist/` output to the `deploy` branch.
-4. In SPanel, connect this private repository using the `deploy` branch and set its deployment/document root to:
+**Canonical source:** `main`. Open a feature branch and PR; do not push work directly to `deploy`.
 
-   `/home/andrewga/public_html`
+1. Open a PR to `main`. GitHub Actions installs locked dependencies, builds Astro, verifies internal routes/links, and checks the Cloudflare preview variant.
+2. After connecting Cloudflare Pages as described in [the deployment runbook](docs/deployment.md), each PR also receives an individual hosted Pages preview URL.
+3. The optional **Promote PR to shared staging** manual GitHub workflow points `staging` at a chosen open PR. A proxied Cloudflare CNAME then exposes it at `test.andrewgallagher.net`.
+4. After review, merge the PR into `main`. The production workflow builds and publishes the static `dist/` output to `deploy`. SPanel must still update its checkout to serve the result.
+5. Compare the footer build revision to the intended source commit. See [recovery notes](docs/recovery.md) for the lost portfolio history and safety checks.
 
-SPanel needs read access to the private repository. If its Git integration supports a webhook for branch updates, connect it to the `deploy` branch; otherwise use SPanel's pull/update action after a successful GitHub Actions run.
-
-The `main` branch is the editable source. The `deploy` branch contains only the generated static site.
+**Important:** The current server checkout and public document root must be verified and backed up before merging the recovery PR. Earlier references to `/home/andrewga/site` and `/home/andrewga/public_html` describe intended locations, not a confirmed present-day deploy mapping.
 
 ## Local development
 
