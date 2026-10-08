@@ -4,3 +4,5 @@
 
 /* Navigation and accessible focus for multipage portfolio */
 .nav-links{flex-wrap:wrap;justify-content:flex-end;row-gap:5px}.nav-links a{white-space:nowrap}@media(max-width:460px){.nav-links{gap:7px 11px;font-size:.75rem}nav{height:auto;min-height:76px;padding-top:12px!important;padding-bottom:12px!important}}
+
+.build-revision{font:.68rem ui-monospace,Consolas,monospace;letter-spacing:.04em;color:var(--muted);white-space:nowrap}
