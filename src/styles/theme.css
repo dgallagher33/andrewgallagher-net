@@ -1,0 +1,28 @@
+/* Theme: honors OS on first visit through early head script; user choice persists. */
+.theme-toggle{display:inline-flex;align-items:center;justify-content:center;gap:7px;flex:none;min-height:44px;padding:9px 12px;border:1px solid var(--line);background:var(--light);color:var(--ink);cursor:pointer;font-size:.75rem;font-weight:700;white-space:nowrap}
+.theme-toggle:hover{border-color:var(--blue)}
+.theme-toggle-icon{font-size:1rem;line-height:1}
+:root[data-theme='dark']{color-scheme:dark;--ink:#eef3ff;--muted:#b7c6dd;--blue:#93bbff;--line:#30435d;--paper:#0e1728;--light:#17263c;--orange:#ffc27b}
+:root[data-theme='dark'] body,:root[data-theme='dark'] header,:root[data-theme='dark'] footer{background:var(--paper);color:var(--ink)}
+:root[data-theme='dark'] .case-card,:root[data-theme='dark'] .lens-options button,:root[data-theme='dark'] .contact,:root[data-theme='dark'] .project-library .library-card{background:#14233a;color:var(--ink)}
+:root[data-theme='dark'] .case-card .case-result,:root[data-theme='dark'] .tag,:root[data-theme='dark'] .transform-columns>div,:root[data-theme='dark'] .insight,:root[data-theme='dark'] blockquote{background:#1d314b;color:var(--ink)}
+:root[data-theme='dark'] .strip strong,:root[data-theme='dark'] .outcomes strong,:root[data-theme='dark'] .footer-inner a,:root[data-theme='dark'] .resume-headline,:root[data-theme='dark'] .resume-role h3{color:var(--ink)}
+:root[data-theme='dark'] .lens-options button[aria-pressed=true]{background:#245eab;color:#fff;border-color:#86b5ff}
+:root[data-theme='dark'] .process-path li{background:#0e1728;color:var(--ink)}
+:root[data-theme='dark'] .process-path li:before{color:#b7c6dd}
+:root[data-theme='dark'] .project-library .library-card{background:linear-gradient(145deg,#14233a,#1a304d)}
+:root[data-theme='dark'] .resume-header,:root[data-theme='dark'] .resume-actions{background:transparent}
+:root[data-theme='dark'] .skip{background:#0e1728;color:#eef3ff}
+:root[data-theme='dark'] .ha-page{color:var(--ink)}
+:root[data-theme='dark'] .ha-page [class*="ha-"]{border-color:var(--line)}
+:root[data-theme='dark'] .hero:before{opacity:.35}
+:root[data-theme='dark'] .theme-toggle{background:#203553;color:#eef3ff}
+:root[data-theme='dark'] .gaia-node-link,:root[data-theme='dark'] .gaia-panel{background:#101f35}
+:root[data-theme='dark'] .gaia-node-link[aria-current=true]{background:#1e3656}
+:root[data-theme='dark'] .gaia-layer{background:#142c4a}
+:root[data-theme='dark'] .contact .button,:root[data-theme='dark'] .button{background:#275dba;color:white}
+:root[data-theme='dark'] .project-label{color:var(--blue)!important}
+:root[data-theme='dark'] a:focus-visible,:root[data-theme='dark'] button:focus-visible,:root[data-theme='dark'] summary:focus-visible{outline-color:#ffc27b}
+@media(max-width:760px){nav.wrap{flex-wrap:wrap;justify-content:space-between;row-gap:10px;height:auto;min-height:76px;padding-top:11px;padding-bottom:11px}.theme-toggle{order:2}.nav-links{order:3;width:100%;justify-content:flex-start;gap:8px 16px}.brand{order:1}}
+@media(max-width:390px){.theme-toggle{padding:8px 10px}.theme-toggle [data-theme-label]{display:none}.nav-links{gap:7px 11px}}
+@media print{:root[data-theme='dark']{--ink:#111;--muted:#333;--blue:#184edc;--line:#ccc;--paper:#fff;--light:#fff}:root[data-theme='dark'] body{background:#fff!important;color:#111!important}.theme-toggle{display:none!important}}
