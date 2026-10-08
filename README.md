@@ -71,3 +71,5 @@ Theme selection is implemented by `ThemeToggle.astro`, `src/scripts/theme.ts`, a
 **Live revision identifier:** The build step supplies `PUBLIC_BUILD_SHA` from the GitHub commit. `BuildRevision.astro` displays its short SHA in the static footer. For a completed deployment, compare that label with the commit built for `main` to distinguish stale SPanel output from stale source. Local builds omit the label unless the variable is supplied; no private secrets are used.
 
 The professional workflow page uses `src/scripts/process.ts` for optional Before / After / Compare controls. Both conceptual stages remain visible without JavaScript and when printed.
+
+The landing diagram uses a full-size two-column link grid below 520px rather than compressing SVG labels to unreadable sizes. Each link leads to the same evidence-backed page. Shared `PersonMetadata.astro` emits basic professional structured data only; canonical/sitemap URLs are intentionally omitted until the production hostname is confirmed.
