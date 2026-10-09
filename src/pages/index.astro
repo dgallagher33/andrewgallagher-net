@@ -1,30 +1,64 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Card from '../components/Card.astro';
+import CareerCases from '../components/CareerCases.astro';
+import SystemsNetwork from '../components/SystemsNetwork.astro';
+import GaiaExplorer from '../components/GaiaExplorer.astro';
+import ThemeToggle from '../components/ThemeToggle.astro';
+import BuildRevision from '../components/BuildRevision.astro';
+import PersonMetadata from '../components/PersonMetadata.astro';
+import { linkedinUrl } from '../data/resume';
+import '../styles/base.css';
+import '../styles/portfolio.css';
+import '../styles/evolution.css';
+import '../styles/systems.css';
+import '../styles/theme.css';
 ---
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<script is:inline>
+try {
+  const value = localStorage.getItem('ag-theme');
+  document.documentElement.dataset.theme = value === 'dark' || value === 'light'
+    ? value : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+} catch {
+  document.documentElement.dataset.theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+}
+</script>
+<PersonMetadata />
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Andrew Gallagher — Product & Systems</title>
+<meta name="description" content="Digital Product Manager bridging insurance operations and technology. Explore product leadership, SQL and API work, applied AI, and a hands-on homelab.">
+<meta property="og:title" content="Andrew Gallagher — Product & Systems"><meta property="og:description" content="Product leadership, workflow modernization, applied AI, and hands-on systems experience. Explore the work relevant to your team."><meta property="og:type" content="website">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23111e35'/%3E%3Ctext x='32' y='43' font-family='Arial' font-size='31' font-weight='bold' text-anchor='middle' fill='%23ffffff'%3EAG%3C/text%3E%3C/svg%3E">
 
-<Layout title="Welcome to Astro">
-  <main class="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
-    <div class="container mx-auto px-4 py-12">
-      <h1 class="text-5xl font-bold text-gray-900 mb-4">Welcome to Astro</h1>
-      <p class="text-xl text-gray-700 mb-8">
-        A modern framework for building fast, content-focused websites with less JavaScript.
-      </p>
+</head>
+<body id="top">
+<a class="skip" href="#main">Skip to content</a>
+<header><nav class="wrap" aria-label="Main navigation"><a class="brand" href="#top" aria-label="Andrew Gallagher home"><span class="monogram" aria-hidden="true">AG</span><span>Andrew Gallagher</span></a><div class="nav-links"><a href="/work/">Work</a><a href="/resume/">Résumé</a><a href="/projects/">Projects</a><a href="#about">About</a><a href="#contact">Contact</a></div><ThemeToggle /></nav></header>
+<main id="main" class="wrap">
+<section class="hero" aria-labelledby="headline"><div><p class="eyebrow">Digital Product Manager / Systems builder</p><h1 id="headline">Product thinking.<br /><span>Systems fluency.</span></h1><p class="intro">I'm Andrew Gallagher. I turn complex insurance operations into practical digital workflows, and keep my technical skills grounded by building and running my own infrastructure.</p>
+<div class="lens-picker" hidden data-enhanced><p id="lens-label">What does your team need?</p><div class="lens-options" role="group" aria-labelledby="lens-label"><button type="button" data-focus="all" aria-pressed="true">The full picture</button><button type="button" data-focus="product" aria-pressed="false">Product leadership</button><button type="button" data-focus="technical" aria-pressed="false">Technical product</button><button type="button" data-focus="ai" aria-pressed="false">Applied AI</button></div></div>
+<div class="lens-note"><h2 id="lens-title">Product perspective. Hands-on curiosity.</h2><p id="lens-description">Explore the professional work and the lab: two ways I turn complex systems into useful experiences.</p><div class="hero-actions"><a href="/resume/">View my résumé ↗</a><a id="lens-first" href="#notice-automation">Explore professional work</a><a id="lens-second" href="#ai-sysadmin">Explore the AI sysadmin project</a></div></div></div><div class="hero-aside"><SystemsNetwork /></div></section>
+<div class="strip" aria-label="Selected professional results"><div><strong>~12,000</strong>Notices handled annually<span>Connected rules, deadlines, and workflows</span></div><div><strong>~20 → ~1 min</strong>Notice-identification runtime<span>A database process I optimized</span></div><div><strong>~50</strong>Stakeholders across departments<span>12 planning meetings every three weeks</span></div></div>
+<div class="home-cta-row"><a class="evo-link" href="/work/">Explore all professional case studies →</a></div><CareerCases />
+<section class="section lab-section" id="projects" aria-labelledby="projects-heading"><div class="section-head"><div><p class="eyebrow">02 / The homelab</p><h2 id="projects-heading">Curiosity, put into practice.</h2></div><p>Real infrastructure, real changes, and the troubleshooting and recovery decisions behind them.</p></div>
+<GaiaExplorer />
+<article class="project featured-project" id="ai-sysadmin" aria-labelledby="ai-heading"><span class="index">01</span><div><p class="project-label">Featured / AI &amp; infrastructure</p><h3 id="ai-heading">AI sysadmin: operating Gaia with scoped access</h3><p><a class="evo-link" href="/projects/ai-sysadmin/">Explore the flagship case study →</a></p><p>I built an AI sysadmin workflow with scoped permissions across every Proxmox server in my homelab. It has grown from diagnostic assistance into a practical way to carry out complex infrastructure work under my direction.</p><div class="tags"><span class="tag">AI agents</span><span class="tag">Scoped permissions</span><span class="tag">Proxmox VE 9</span><span class="tag">Proxmox Backup Server</span></div><div class="project-takeaway"><h4>My role</h4><p>I set the goals and permission boundaries, directed the work with AI, and planned recovery throughout. The project brings together systems administration, troubleshooting, and decisions about what an agent should be allowed to do.</p></div></div><div class="project-detail"><h4>What I've delivered</h4><ul class="outcomes"><li><strong>Proxmox 8 → 9 cluster upgrade.</strong> Used AI exclusively to carry out the upgrade under my direction.</li><li><strong>Dedicated backup infrastructure.</strong> Set up Proxmox Backup Server together with AI as part of the lab's recovery approach.</li><li><strong>GPU-backed Ollama maintained.</strong> Worked through significant host, NVIDIA, and LXC hurdles to maintain GPU access for local inference.</li><li><strong>A recovery path throughout.</strong> Planned emergency console access using a NanoKVM USB as a portable crash cart.</li></ul><h4>What this demonstrates</h4><p>Applying AI to consequential technical work, defining access boundaries, diagnosing failures across system layers, and keeping recovery in view during major changes.</p><details><summary>The engineering behind the result</summary><p>The hardest work sits between layers: the Proxmox host, NVIDIA drivers and userspace libraries, container device access, and Ollama's ability to use the GPU. Troubleshooting has included host/container library mismatches and stale NVIDIA device permissions that prevented CUDA offload even when nvidia-smi could see the GPU.</p><p>The recovery plan includes a NanoKVM USB for direct screen and keyboard access from a laptop when ordinary remote administration is unavailable. It is a planned emergency route; the backup server is already set up.</p></details></div></article>
+<article class="project"><span class="index">02</span><div><h3>Gaia: a self-hosted ecosystem</h3><p>A multi-node homelab bringing together compute, storage, identity, remote access, and services I use at home.</p><div class="tags"><span class="tag">Proxmox</span><span class="tag">Linux / LXC</span><span class="tag">Docker</span><span class="tag">ZFS</span></div></div><div class="project-detail"><h4>What I work with</h4><p>Distributing services across hardware with different capabilities; running containers and virtual machines; connecting local services through Traefik and remote access through a VPS.</p><h4>What this demonstrates</h4><p>Systems integration, Linux administration, networking, and practical decisions about where a service belongs.</p><details><summary>Inside the project</summary><p>The lab combines a NAS, an Intel NUC, a Dell system, and a GPU-equipped laptop. Authentik provides identity for supported services. Prometheus, Grafana, and Uptime Kuma provide monitoring, while Cloudflare DNS and certificate automation support service access.</p></details></div></article>
+<article class="project"><span class="index">03</span><div><h3>Local AI on Olympus</h3><p>Using an existing GPU laptop as a host for local language models, with Ollama running inside a Linux container.</p><div class="tags"><span class="tag">Ollama</span><span class="tag">NVIDIA / CUDA</span><span class="tag">LXC</span><span class="tag">Open WebUI</span></div></div><div class="project-detail"><h4>What I work with</h4><p>GPU access inside a container, Linux driver compatibility, and the relationship between available hardware and local model choices.</p><h4>What this demonstrates</h4><p>Diagnosing issues across hardware, the host operating system, and the container environment.</p><details><summary>Inside the project</summary><p>Olympus has an RTX 3080 Mobile GPU and 64 GB of system memory. The Ollama container uses NVIDIA libraries and CUDA, with troubleshooting extending from GPU visibility to CUDA offload and actual model acceleration. Maintaining this workload has become a key part of my AI sysadmin project.</p></details></div></article>
+<article class="project" id="home-assistant"><span class="index">04</span><div><h3>A home that responds</h3><p>Connecting physical controls, lighting, and software through Home Assistant, with an emphasis on useful behavior.</p><div class="tags"><span class="tag">Home Assistant</span><span class="tag">Zigbee / ZHA</span><span class="tag">Inovelli</span><span class="tag">Automation</span></div></div><div class="project-detail"><h4>What I work with</h4><p>Smart-bulb mode, switch events, and lighting scenes that connect a familiar wall control to configurable behavior.</p><h4>What this demonstrates</h4><p>Translating a household need into an interaction, then troubleshooting the device and software layers that make it work.</p><p><a class="project-readmore" href="/projects/home-assistant/">Explore the Home Assistant project</a></p></div></article>
+<article class="project"><span class="index">05</span><div><h3>One identity across services</h3><p>Connecting supported self-hosted applications to Authentik, including a working OpenID Connect integration with Gitea and Google sign-in.</p><div class="tags"><span class="tag">Authentik</span><span class="tag">OpenID Connect</span><span class="tag">Gitea</span><span class="tag">Identity &amp; access</span></div></div><div class="project-detail"><h4>What I built</h4><p>A shared identity layer for supported services, with groups organized around the people who use the lab and the access they need.</p><h4>What this demonstrates</h4><p>Integrating application authentication, understanding the relationship between sign-in and authorization, and making access decisions across a self-hosted environment.</p><details><summary>Inside the project</summary><p>Authentik connects Google sign-in to supported applications. I configured Gitea to use OpenID Connect and organized identity groups for family, friends, administrators, and different service roles.</p></details></div></article>
+</section></main>
+<section class="approach" id="approach" aria-labelledby="skills-heading"><div class="wrap approach-grid"><div><p class="eyebrow">03 / Practical experience</p><h2 id="skills-heading">Connecting the parts.<br>Understanding the whole.</h2></div><div><p>At work, I investigate data and integrations directly and translate business needs into delivery context. In the lab, I own the permissions, dependencies, and recovery path. Each strengthens the way I work with technical teams.</p><div class="capabilities"><div><h3>Systems & networking</h3><p>Linux, Proxmox VE, Proxmox Backup Server, containers, GPU access, storage, DNS, and remote access.</p></div><div><h3>Identity & observability</h3><p>Authentik, OIDC integrations, Prometheus, Grafana, and uptime monitoring.</p></div><div><h3>AI & automation</h3><p>Scoped agent access, AI-assisted cluster upgrades, Ollama, Open WebUI, and n8n workflows.</p></div><div><h3>Data & product tools</h3><p>SQL Server, Postman, advanced Excel/VBA, story definition, prioritization, and Jira backlog management.</p></div></div></div></div></section>
+<section class="section wrap" id="about" aria-labelledby="about-heading"><div class="about-grid"><div><p class="eyebrow">04 / How I got here</p><h2 id="about-heading">I learned the operation.<br />Then started improving it.</h2><p>My path into product combines an early foundation in technical support with years inside insurance operations and underwriting. Building tools to solve the problems in front of me led to IT, business systems analysis, and company-wide digital product management.</p><p>That background still shapes my approach: learn how the work actually happens, identify the friction, and connect the people and systems needed to improve it. Outside work, the homelab keeps that learning practical.</p></div><div class="career"><h3>Digital Product Manager</h3><p class="company">McNeil &amp; Co. · Digital Product Manager since March 2020</p><p>I work across underwriting, claims, finance, HR, and risk management, shaping stories and priorities with business leadership and IT. My leadership comes through facilitation, technical credibility, and a clear understanding of the operation.</p><p style="margin-top:18px">I lead the AI user group, present at IT town halls, and work directly with developers, analysts, and vendors to turn product intent into workable decisions.</p></div></div>
+<div class="career-roots"><p class="eyebrow">The technical foundation</p><p>Long before managing digital products, I supported campus users, repaired customer and business computers, and assisted with systems implementations. That experience taught me to diagnose problems firsthand and make technology understandable.</p><p>My education combines a bachelor's degree in Business Administration from the University at Buffalo with an Associate of Science in General Studies from Tompkins Cortland Community College. <a href="/resume/">See my full career history →</a></p></div><div class="career-journey"><h3>A career built from the inside out</h3><p><a class="evo-link" href="/resume/">Full experience and résumé →</a></p><ol class="journey-grid"><li><span>01 / Apr 2016 – Feb 2017</span><strong>Policy Analyst</strong><p>Policy issuance, forms, coverage, and underwriting data.</p></li><li><span>02 / Feb 2017 – Aug 2019</span><strong>Underwriting Assistant</strong><p>Rating, endorsements, proposals, and the pricing calculator.</p></li><li><span>03 / Aug 2019 – Mar 2020</span><strong>Business Analyst</strong><p>Core-system expertise, database logic, integration, and workflow automation.</p></li><li><span>04 / Mar 2020 – Present</span><strong>Digital Product Manager</strong><p>Company-wide planning, modernization, stakeholder alignment, and applied AI.</p></li></ol></div>
+<div class="contact" id="contact"><div><h3>Working on a complex operational product?</h3><p>Let's talk about your team, the workflow you're improving, and where product judgment and technical fluency could help.</p></div><a class="button" href="mailto:dgallagher33@gmail.com?subject=Let%27s%20talk%20about%20your%20team">Start a conversation</a></div></section>
+<footer><div class="wrap footer-inner"><span>Andrew Gallagher · Product & Systems</span><span><a href="https://github.com/dgallagher33">GitHub</a> · <a href={linkedinUrl}>LinkedIn</a> · Product work &amp; personal projects</span><a href="#top">Back to top</a><BuildRevision /></div></footer>
+<script>
+import '../scripts/evolution';
+import '../scripts/systems';
+import '../scripts/portfolio';
+</script>
+</body></html>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <Card
-          title="Fast by Default"
-          description="Astro ships zero JavaScript by default. Load the page faster."
-        />
-        <Card
-          title="Tailwind CSS"
-          description="Utility-first CSS framework for rapid UI development."
-        />
-        <Card
-          title="TypeScript Ready"
-          description="Full TypeScript support for type-safe development."
-        />
-      </div>
-    </div>
-  </main>
-</Layout>

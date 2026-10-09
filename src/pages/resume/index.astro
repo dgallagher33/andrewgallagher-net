@@ -1,0 +1,120 @@
+---
+import ProjectLayout from '../../layouts/ProjectLayout.astro';
+import {
+  experience,
+  earlierTechnicalExperience,
+  additionalExperience,
+  education,
+  listedCertification,
+  professionalLearning,
+  languages,
+  skills,
+  highlights,
+  linkedinUrl
+} from '../../data/resume';
+import '../../styles/resume.css';
+---
+<ProjectLayout title="Résumé | Digital Product Manager" description="Andrew Gallagher's résumé: insurance product management, technical support background, SQL and API modernization, education, and applied AI.">
+  <article class="resume-page wrap" id="resume">
+    <div class="resume-actions" aria-label="Résumé actions">
+      <span class="eyebrow">Professional résumé</span>
+      <div>
+        <button type="button" class="button print-button" data-print-resume hidden>Print / Save as PDF</button>
+        <a href="/work/">Selected work</a>
+        <a href="mailto:dgallagher33@gmail.com">Email</a>
+      </div>
+    </div>
+    <header class="resume-header">
+      <p class="eyebrow">Andrew Gallagher / Product &amp; Systems</p>
+      <h1>Andrew Gallagher</h1>
+      <p class="resume-headline">Digital Product Manager <span aria-hidden="true">/</span> Technical Product Management <span aria-hidden="true">/</span> Workflow Modernization &amp; Applied AI</p>
+      <p class="resume-summary">Digital Product Manager with a background spanning insurance operations, business systems and hands-on IT support. Progressed from policy analysis and commercial underwriting into business analysis and company-wide product management. Connects business stakeholders and technical teams using SQL, API, automation and applied AI fluency, paired with practical knowledge of how the underlying work gets done.</p>
+      <p class="resume-contact">
+        <a href="mailto:dgallagher33@gmail.com">dgallagher33@gmail.com</a>
+        <span aria-hidden="true">·</span>
+        <a href={linkedinUrl} rel="me">LinkedIn</a>
+        <span aria-hidden="true">·</span>
+        <a href="https://github.com/dgallagher33" rel="me">GitHub</a>
+        <span aria-hidden="true">·</span>
+        <a href="/">andrewgallagher.net</a>
+      </p>
+    </header>
+
+    <section class="resume-section" aria-labelledby="resume-highlights">
+      <h2 id="resume-highlights">Selected impact</h2>
+      <div class="resume-highlights">{highlights.map(item =>
+        <div><strong>{item.metric}</strong><p>{item.description}</p></div>
+      )}</div>
+    </section>
+
+    <section class="resume-section" aria-labelledby="resume-experience">
+      <h2 id="resume-experience">Professional experience</h2>
+      <div class="resume-experience">{experience.map(role =>
+        <section class="resume-role">
+          <div class="resume-role-head"><h3>{role.title}</h3><p>{role.period}</p></div>
+          <p class="resume-organization">{role.organization} · {role.context}</p>
+          <ul>{role.bullets.map(bullet => <li>{bullet}</li>)}</ul>
+        </section>
+      )}</div>
+    </section>
+
+    <section class="resume-section resume-early-tech" aria-labelledby="resume-technical-foundation">
+      <h2 id="resume-technical-foundation">Earlier technical experience</h2>
+      <p class="resume-section-lead">My technical background began in direct support and systems work, well before my transition into insurance IT.</p>
+      <div class="resume-early-grid">{earlierTechnicalExperience.map(role =>
+        <article class="resume-early-role">
+          <div class="resume-role-head"><h3>{role.title}</h3><p>{role.period}</p></div>
+          <p class="resume-organization">{role.organization}</p>
+          <p>{role.description}</p>
+        </article>
+      )}</div>
+    </section>
+
+    <section class="resume-section" aria-labelledby="resume-education">
+      <h2 id="resume-education">Education</h2>
+      <div class="resume-education-list">{education.map(item =>
+        <article class="resume-education-entry">
+          <div><h3>{item.institution}</h3><p>{item.degree}</p></div>
+          <span>{item.period}</span>
+        </article>
+      )}</div>
+    </section>
+
+    <section class="resume-section" aria-labelledby="resume-skills">
+      <h2 id="resume-skills">Capabilities</h2>
+      <div class="resume-skills">{skills.map(group =>
+        <div><h3>{group.heading}</h3><p>{group.items}</p></div>
+      )}</div>
+    </section>
+
+    <section class="resume-section resume-development" aria-labelledby="resume-development">
+      <h2 id="resume-development">Certifications &amp; continued learning</h2>
+      <div class="resume-development-grid">
+        <div><h3>Certification listed on LinkedIn</h3><p>{listedCertification}</p><p class="resume-qualification">Issuing organization and award date not specified in the profile export.</p></div>
+        <div><h3>LinkedIn-listed courses</h3><ul>{professionalLearning.map(item => <li>{item}</li>)}</ul></div>
+      </div>
+    </section>
+
+    <section class="resume-section resume-additional" aria-labelledby="resume-other-work">
+      <h2 id="resume-other-work">Additional earlier experience</h2>
+      <div class="resume-additional-list">{additionalExperience.map(role =>
+        <p><strong>{role.title}</strong> · {role.organization} <span>({role.period})</span> — {role.description}</p>
+      )}</div>
+      <p class="resume-languages"><strong>Languages:</strong> {languages.join(' · ')}</p>
+    </section>
+
+    <section class="resume-section resume-links" aria-labelledby="resume-selected">
+      <h2 id="resume-selected">Selected work &amp; projects</h2>
+      <p><a href="/work/#notice-automation">Regulatory notice modernization</a> · <a href="/work/#portal-strategy">Shared portal strategy</a> · <a href="/work/#ai-adoption">AI enablement</a></p>
+      <p><a href="/projects/ai-sysadmin/">AI-assisted Proxmox operations</a> · <a href="/projects/home-assistant/">Home Assistant interaction design</a></p>
+    </section>
+    <p class="resume-note">Dates, degrees, and earlier positions come from my LinkedIn profile export. Achievements reflect my career interview and are attributed as collaborative work where appropriate. Reported operating metrics are approximate; estimated annualized time savings are not presented as verified results.</p>
+  </article>
+  <script>
+    const printControl=document.querySelector<HTMLButtonElement>('[data-print-resume]');
+    if(printControl){
+      printControl.hidden=false;
+      printControl.addEventListener('click',()=>window.print());
+    }
+  </script>
+</ProjectLayout>

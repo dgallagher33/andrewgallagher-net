@@ -6,6 +6,8 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
+    "build:preview": "node scripts/build-preview.mjs",
+    "verify:dist": "node scripts/verify-dist.mjs",
     "preview": "astro preview",
     "check": "astro check",
     "format": "prettier --write ."

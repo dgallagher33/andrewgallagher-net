@@ -1,0 +1,11 @@
+---
+import ProjectLayout from '../../layouts/ProjectLayout.astro';
+import CareerCases from '../../components/CareerCases.astro';
+import '../../styles/evolution.css';
+---
+<ProjectLayout title="Professional work" description="Selected product management, automation, platform and AI initiatives across insurance operations.">
+ <div class="wrap subpage-hero"><p class="eyebrow">Professional portfolio / 01</p><h1>Systems worth<br/><span>improving.</span></h1><p class="intro">The common thread in my work: understand the operation, expose the bottleneck, and connect the people, rules and technology required to make it better.</p><a href="/resume/" class="evo-link">Read my résumé →</a></div>
+ <div class="wrap"><CareerCases /></div>
+ <section class="wrap transformation" data-process-comparison aria-labelledby="transformation-title"><p class="eyebrow">Process design / Conceptual model</p><h2 id="transformation-title">From handoffs to a connected workflow.</h2><p>This comparison summarizes the regulatory notice experience before and after modernization. It is an illustration, not an exact system diagram.</p><div class="process-controls" hidden data-process-controls role="group" aria-label="Choose workflow comparison view"><button type="button" data-process-view="both" aria-pressed="true">Compare both</button><button type="button" data-process-view="before" aria-pressed="false">Before</button><button type="button" data-process-view="after" aria-pressed="false">After</button></div><div class="transform-columns"><div data-process-stage="before"><h3>Before / fragmented</h3><ol class="process-path"><li>Reports</li><li>Spreadsheet</li><li>Manual review</li><li>Assignment</li><li>Notice preparation</li><li>Sending and filing</li></ol></div><div data-process-stage="after"><h3>After / connected</h3><ol class="process-path connected"><li>Database rules</li><li>Qualification</li><li>Automated workflows and deadlines</li><li>Integrated review</li><li>Delivery and filing</li></ol></div></div><p class="process-note">The process handles approximately 12,000 notices annually. A core identification query was reduced from about 20 minutes to about 1 minute. Annual hours-saved estimates are deliberately excluded pending validation.</p></section>
+<script>import '../../scripts/process';</script>
+</ProjectLayout>

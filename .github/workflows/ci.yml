@@ -1,0 +1,47 @@
+name: Validate Astro site
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main, staging]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: build-and-check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - name: Install dependencies
+        run: npm ci
+      - name: Build static site
+        env:
+          PUBLIC_BUILD_SHA: ${{ github.sha }}
+        run: npm run build
+      - name: Validate generated site
+        run: npm run verify:dist
+      - name: Build preview variant
+        run: npm run build:preview
+      - name: Validate preview headers and site
+        env:
+          EXPECT_PREVIEW_HEADERS: '1'
+        run: npm run verify:dist
+      - name: Archive preview output for offline review
+        uses: actions/upload-artifact@v4
+        with:
+          name: preview-dist
+          path: dist/
+          if-no-files-found: error
+          retention-days: 7

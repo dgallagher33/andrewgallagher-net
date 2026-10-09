@@ -1,0 +1,43 @@
+---
+const nodes = [
+  { key:'product', label:'Product strategy', sub:'Priorities + people', title:'Product strategy', description:'Company-wide planning across approximately 50 stakeholders connects business priorities, technical constraints, and delivery.', href:'/work/#product-cadence', x:157, y:91 },
+  { key:'data', label:'Data & APIs', sub:'Reusable signals', title:'Data & APIs', description:'SQL tuning and API-based enrichment underpin a regulatory notice process and more reusable underwriting information.', href:'/work/#notice-automation', x:483, y:91 },
+  { key:'business', label:'Business needs', sub:'Operational context', title:'Business needs', description:'Starting in insurance operations taught me to recognize real workflow constraints before designing a solution.', href:'/resume/', x:157, y:244 },
+  { key:'automation', label:'Automation', sub:'Connected workflows', title:'Workflow automation', description:'Rules, deadlines, API integrations and repeatable handoffs reduce fragmentation in regulatory notice workflows.', href:'/work/#notice-automation', x:483, y:244 },
+  { key:'ai', label:'Applied AI', sub:'Guardrails + utility', title:'Applied AI', description:'Leading an AI user group at work and directing scoped AI-assisted infrastructure administration in Gaia.', href:'/projects/ai-sysadmin/', x:157, y:397 },
+  { key:'infra', label:'Infrastructure', sub:'Hands-on systems', title:'Infrastructure', description:'Gaia brings compute, storage, identity, recovery and GPU-backed local AI into a working homelab.', href:'/#gaia-architecture', x:483, y:397 },
+] as const;
+---
+<figure class="systems-network" data-systems-network aria-labelledby="network-label">
+  <div class="systems-network-heading"><span id="network-label">SYSTEMS / CONNECTED THINKING</span><span>Explore a relationship ↗</span></div>
+  <svg viewBox="0 0 640 486" role="group" aria-label="Six connected areas of work and their linked case studies">
+    <defs>
+      <pattern id="systems-grid" width="24" height="24" patternUnits="userSpaceOnUse"><path d="M24 0H0V24" fill="none" stroke="currentColor" stroke-opacity=".12" stroke-width=".7"/></pattern>
+      <linearGradient id="systems-flow" x1="0" x2="1"><stop offset="0" stop-color="#69adff"/><stop offset="1" stop-color="#a6abff"/></linearGradient>
+    </defs>
+    <rect class="systems-grid" width="640" height="486" fill="url(#systems-grid)"/>
+    <g class="system-connections" aria-hidden="true">
+      <path d="M157 91H483V244H157V397H483"/>
+      <path d="M157 91V244M483 91L157 397M157 244L483 397"/>
+      <circle class="network-pulse pulse-one" cx="157" cy="91" r="4"/>
+      <circle class="network-pulse pulse-two" cx="483" cy="397" r="4"/>
+    </g>
+    {nodes.map((node) => (
+      <a class="system-node" href={node.href} data-system-key={node.key} data-system-title={node.title} data-system-description={node.description} aria-label={`${node.title}: ${node.description}`}>
+        <rect x={node.x-116} y={node.y-43} width="232" height="86" rx="10" />
+        <circle cx={node.x-90} cy={node.y-18} r="5" />
+        <text x={node.x-74} y={node.y-13} class="system-node-name">{node.label}</text>
+        <text x={node.x-90} y={node.y+17} class="system-node-sub">{node.sub}</text>
+      </a>
+    ))}
+  </svg>
+  <nav class="systems-mobile-links" aria-label="Explore connected work">
+    {nodes.map(node=><a href={node.href}><strong>{node.label}</strong><span>{node.sub} ↗</span></a>)}
+  </nav>
+  <figcaption class="systems-network-detail">
+    <span class="eyebrow">CONNECTION IN FOCUS</span>
+    <strong data-system-detail-title>Product strategy</strong>
+    <p data-system-detail-copy>Company-wide planning across approximately 50 stakeholders connects business priorities, technical constraints, and delivery.</p>
+    <p class="systems-network-hint">Hover or focus a node to preview its story; activate it to explore.</p>
+  </figcaption>
+</figure>

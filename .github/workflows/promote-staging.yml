@@ -1,0 +1,46 @@
+name: Promote PR to shared staging
+
+on:
+  workflow_dispatch:
+    inputs:
+      pr_number:
+        description: Open pull request number to display at test.andrewgallagher.net
+        required: true
+        type: number
+
+permissions:
+  contents: write
+  pull-requests: read
+
+concurrency:
+  group: staging-promotion
+  cancel-in-progress: false
+
+jobs:
+  stage:
+    name: select-staging-commit
+    runs-on: ubuntu-latest
+    steps:
+      - name: Validate PR and move staging branch
+        env:
+          PR_NUMBER: ${{ inputs.pr_number }}
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const { owner, repo } = context.repo;
+            const pull_number = Number(process.env.PR_NUMBER);
+            if (!Number.isSafeInteger(pull_number) || pull_number < 1) {
+              core.setFailed('Enter a valid pull request number.');
+              return;
+            }
+            const { data: pr } = await github.rest.pulls.get({ owner, repo, pull_number });
+            if (pr.state !== 'open' || pr.base.ref !== 'main' || pr.head.repo.full_name !== context.repo.owner + '/' + context.repo.repo) {
+              core.setFailed('Only open PRs into main from this repository can be staged.');
+              return;
+            }
+            const sha = pr.head.sha;
+            await github.rest.git.updateRef({ owner, repo, ref: 'heads/staging', sha, force: true });
+            await core.summary.addHeading('Staging selected')
+              .addRaw('PR #' + pull_number + ' @ ' + sha + '\n')
+              .addRaw('Confirm the corresponding Cloudflare Pages build completed.\n')
+              .write();

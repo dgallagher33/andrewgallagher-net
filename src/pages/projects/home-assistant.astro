@@ -1,0 +1,60 @@
+---
+import ProjectLayout from '../../layouts/ProjectLayout.astro';
+import { scenarios, futureWork } from '../../data/home-assistant';
+import '../../styles/home-assistant.css';
+---
+<ProjectLayout title="Home Assistant: the details behind a familiar switch" description="A closer look at Andrew Gallagher's Home Assistant work: scene selection, LED feedback, color transitions, Zigbee fixture grouping, AI-assistant instructions, and future projects.">
+  <article class="ha-page wrap">
+    <div class="ha-hero">
+      <div>
+        <a class="ha-back" href="/#home-assistant">Back to the portfolio</a>
+        <p class="eyebrow">Project notes / Home Assistant</p>
+        <h1>The details behind<br /><span>a familiar switch.</span></h1>
+        <p class="ha-lead">A useful smart home has to make sense in the moment someone uses it. My Home Assistant work connects physical controls, lighting, and AI assistance, with attention to the behavior between a button press and the result.</p>
+      </div>
+      <aside class="ha-brief" aria-labelledby="ha-brief-heading">
+        <h2 id="ha-brief-heading">The project at a glance</h2>
+        <dl><div><dt>My role</dt><dd>Define the behavior, configure the system, troubleshoot, and refine the interaction.</dd></div><div><dt>Core setup</dt><dd>Home Assistant OS on Fuji · Zigbee / ZHA · Inovelli switches and bulbs</dd></div><div><dt>Focus</dt><dd>Predictable physical controls, understandable feedback, and useful abstractions.</dd></div></dl>
+      </aside>
+    </div>
+    <nav class="ha-contents" aria-label="On this project page"><a href="#lighting">Lighting interactions</a><a href="#walkthrough">Design walkthrough</a><a href="#fixtures">Fixture grouping</a><a href="#assistant">AI assistance</a><a href="#next">What's next</a></nav>
+
+    <section class="ha-section" id="lighting" aria-labelledby="lighting-heading">
+      <div class="ha-section-intro"><p class="eyebrow">01 / Physical controls</p><h2 id="lighting-heading">More than “turn the light on.”</h2><p>The nursery lighting project started with a practical need: familiar on/off control, dimmable white light, and a preset red scene. The interesting work was defining exactly how those choices should behave.</p></div>
+      <div class="ha-two-column">
+        <div><p class="ha-status">Setup established</p><h3>A physical switch with configurable behavior</h3><p>I added an Inovelli Blue switch and an Inovelli bulb to Home Assistant through ZHA and enabled smart-bulb mode. This separates the control interaction from simply cutting power to the bulb.</p><p>It gave me a way to treat the paddle and the configuration button as inputs to the experience, with Home Assistant coordinating the lighting behavior.</p></div>
+        <div><p class="ha-status">Interaction requirements</p><h3>The next action should be understandable</h3><ul class="ha-requirements"><li><strong>Select before activating.</strong> Use the macro/configuration button to choose the next-on scene.</li><li><strong>Show the selection.</strong> Use the switch LED to indicate which scene the next on press will apply.</li><li><strong>Control the first visible state.</strong> Activate red directly, without a flash of the previously used scene.</li></ul></div>
+      </div>
+      <details class="ha-disclosure"><summary>The troubleshooting behind the controls</summary><div><p>The expected “Up single pressed/clicked” event was not initially available in the interface. I worked through the switch-event setup with AI assistance, including a prompt for Hermes to use the Home Assistant API.</p><p>The useful distinction was between the behavior I wanted and the events the integration actually exposed. I continued with ZHA while evaluating whether a move to Zigbee2MQTT would solve a concrete limitation.</p><p>Scene control progressed, but the red-first transition and LED behavior are documented here as interaction requirements. A final state looking correct is only part of the acceptance check.</p></div></details>
+      <p class="ha-takeaway"><strong>The product decision:</strong> the LED should communicate the next action. That requires treating the selected scene and the current light output as separate pieces of state.</p>
+    </section>
+
+    <section class="ha-section ha-walkthrough" id="walkthrough" aria-labelledby="walkthrough-heading">
+      <div class="ha-section-intro"><p class="eyebrow">02 / Interactive design walkthrough</p><h2 id="walkthrough-heading">Explore the edge cases.</h2><p>These are the intended interactions and acceptance checks behind the project. The walkthrough is an illustration of the design.</p></div>
+      <div class="ha-scenario-controls" hidden data-ha-controls role="group" aria-label="Choose an interaction to explore">{scenarios.map((scenario, index) => <button type="button" data-scenario-button={scenario.id} aria-pressed={String(index === 0)} aria-controls={`scenario-${scenario.id}`}>{scenario.label}</button>)}</div>
+      <div class="ha-scenarios">{scenarios.map(scenario => <section class="ha-scenario" id={`scenario-${scenario.id}`} data-scenario={scenario.id} aria-labelledby={`scenario-${scenario.id}-heading`}><p class="ha-status">Interaction specification</p><h3 id={`scenario-${scenario.id}-heading`}>{scenario.title}</h3><p class="ha-context">{scenario.context}</p><dl class="ha-steps"><div><dt>Input</dt><dd>{scenario.event}</dd></div><div><dt>Expected behavior</dt><dd>{scenario.behavior}</dd></div><div><dt>Visible feedback</dt><dd>{scenario.feedback}</dd></div></dl><div class="ha-check"><h4>Acceptance check</h4><p>{scenario.check}</p></div></section>)}</div>
+    </section>
+
+    <section class="ha-section" id="fixtures" aria-labelledby="fixtures-heading">
+      <div class="ha-section-intro"><p class="eyebrow">03 / Device and entity modeling</p><h2 id="fixtures-heading">One fixture. Two bulbs.<br />A small abstraction that matters.</h2><p>When I added two Inovelli Zigbee bulbs to one fixture, the goal was a single useful control for the room.</p></div>
+      <div class="ha-two-column"><div><p class="ha-status">Observed in the setup</p><h3>The group worked differently in the interface</h3><p>After creating the group, I noticed that its light entity appeared under the Zigbee coordinator rather than as a separate fixture device. That raised another design question: how should the household recognize and use it?</p><p>The group, the individual devices, and the fixture people think about are related, but they are different layers of the model.</p></div><div><h3>The user's mental model comes first</h3><p>A person using the room thinks “this light fixture,” not “two bulbs managed by a coordinator.” Grouping provides a shared target; naming and presentation still need to make that target understandable.</p><p>I pay attention to both the functional result and how Home Assistant represents it. This is the same kind of distinction I work through in business systems: a technically correct model needs an interface people can use.</p></div></div>
+      <div class="ha-model" aria-label="Layers of the lighting model"><div><span>Physical layer</span><strong>Two Inovelli bulbs</strong><p>The actual devices installed in one fixture.</p></div><div><span>Control layer</span><strong>A grouped light entity</strong><p>A shared target, shown under the coordinator in my setup.</p></div><div><span>Household layer</span><strong>One recognizable fixture</strong><p>The control and name someone expects when using the room.</p></div></div>
+      <p class="ha-takeaway"><strong>The systems lesson:</strong> device ownership and useful presentation are separate questions. I noticed the mismatch because I was looking at the experience as well as the configuration.</p>
+    </section>
+
+    <section class="ha-section" id="assistant" aria-labelledby="assistant-heading">
+      <div class="ha-section-intro"><p class="eyebrow">04 / AI as part of the workflow</p><h2 id="assistant-heading">Instructions deserve the same care as controls.</h2><p>I use AI assistance to work through Home Assistant configuration, and developed instructions for a ChatGPT-based Home Assistant assistant. The prompt itself became a design problem.</p></div>
+      <div class="ha-two-column"><div><p class="ha-status">Prompt developed</p><h3>Precise behavior in a limited space</h3><p>I iterated on machine-readable instructions, asking for shared rules and more precise wording while preserving meaning. A related Home Improvement / Home Assistant project prompt had a 7,900-character limit.</p><p>The goal was dense, usable instructions with clear relationships between rules. Character count was a real constraint; shorter wording alone was not proof of fewer tokens or better behavior.</p></div><div><h3>Make the assistant's reasoning actionable</h3><ul class="ha-requirements"><li><strong>Inspect before acting.</strong> Ground actions in the devices, entities, and capabilities actually exposed.</li><li><strong>Keep intent and observation distinct.</strong> A requested result and a verified result should be described differently.</li><li><strong>Verify after acting.</strong> Use the resulting system state to determine whether the intended change happened.</li></ul><p>These are instruction-design principles, rather than a claim that the prompt guarantees every live action.</p></div></div>
+      <p class="ha-takeaway"><strong>The common thread:</strong> whether the input comes from a paddle or an AI assistant, the intent, available action, and observable result need to line up.</p>
+    </section>
+
+    <section class="ha-section" id="next" aria-labelledby="next-heading">
+      <div class="ha-section-intro"><p class="eyebrow">05 / An ongoing project</p><h2 id="next-heading">Room to keep building.</h2><p>The lighting and assistant work are part of a growing Home Assistant environment. These are research directions I have begun exploring.</p></div>
+      <div class="ha-two-column">{futureWork.map(item => <div class="ha-future"><p class="ha-status">{item.status}</p><h3>{item.title}</h3><p>{item.description}</p><p class="ha-question">{item.question}</p></div>)}</div>
+      <div class="ha-closing"><h3>What this brings to my product work</h3><p>Clear requirements, attention to transitions and feedback, investigation across system layers, and an interface shaped around how people actually use it. The home gives me a place to practice those habits with consequences I experience directly.</p><a class="button" href="/#work">Explore my professional work</a></div>
+    </section>
+  </article>
+<script>
+  import '../../scripts/home-assistant';
+</script>
+</ProjectLayout>

@@ -1,0 +1,6 @@
+---
+/* Public build provenance, set only for generated artifacts by GitHub Actions. */
+const value = import.meta.env.PUBLIC_BUILD_SHA;
+const revision = typeof value === 'string' && /^[a-f0-9]{7,40}$/i.test(value) ? value.slice(0,7) : null;
+---
+{revision && <span class="build-revision" aria-label={`Published build revision ${revision}`}>Build {revision}</span>}
