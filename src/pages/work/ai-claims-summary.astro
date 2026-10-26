@@ -1,0 +1,109 @@
+---
+import ProjectLayout from '../../layouts/ProjectLayout.astro';
+import '../../styles/evolution.css';
+
+const decisions = [
+  {
+    number: '01',
+    title: 'Keep every claim grounded',
+    challenge: 'A polished AI summary can sound more certain than the record supports.',
+    approach: 'Define bounded JSON output, cite existing claim fields and note identifiers, distinguish allegations from findings, and preserve uncertainty or conflicting evidence.',
+  },
+  {
+    number: '02',
+    title: 'Treat dates as evidence',
+    challenge: 'The date a note was written may not be the date an event occurred.',
+    approach: 'Prefer a sourced occurrence date. If only a note date is supported, label it “Documented.” If neither is established, show that the date is unavailable.',
+  },
+  {
+    number: '03',
+    title: 'Design for an AI failure',
+    challenge: 'Generated responses can be malformed, unavailable or too incomplete to use.',
+    approach: 'Handle the provider response envelope explicitly, validate the result, and preserve the source-only claim presentation as the fallback.',
+  },
+];
+
+const checks = [
+  { count: '6', title: 'Node.js contracts', detail: 'Feedback placement, reference construction, headers and privacy boundaries.' },
+  { count: '8', title: 'Chromium checks', detail: 'Responsive sizing, keyboard use, print, layout and blocked-frame fallback.' },
+  { count: '8', title: 'Offline timeline checks', detail: 'Date-label states, unchanged underlying dates, citations and HTML escaping.' },
+];
+---
+<ProjectLayout title="Evidence-first AI claims briefing" description="Professional case study: how an AI-assisted claims summary was designed around source citations, uncertainty, Power Automate reliability and date semantics.">
+  <article class="wrap deep-project claims-case">
+    <div class="subpage-hero claims-hero">
+      <p class="eyebrow">Professional work / Applied AI / 2026</p>
+      <h1>A clearer claim brief.<br /><span>Evidence still in view.</span></h1>
+      <p class="intro">I contributed to an AI-assisted claims-summary experience designed to help adjusters and managers orient themselves to a claim. The objective was not to make claim decisions; it was to make documented information easier to review responsibly.</p>
+      <div class="evo-chips" aria-label="Technologies and practices"><span>Power Automate</span><span>AI Builder</span><span>JSON Schema</span><span>HTML / CSS</span><span>Node.js / Playwright</span></div>
+      <div class="claims-facts" aria-label="Case study context">
+        <div><span>My role</span><strong>Digital Product Manager</strong><small>Hands-on prompt, integration, UX and validation contributions</small></div>
+        <div><span>Designed for</span><strong>Claims reviewers</strong><small>Adjusters and managers who need a documented first read</small></div>
+        <div><span>Validation status</span><strong>Local work + tests</strong><small>Production outcomes and adoption not established</small></div>
+      </div>
+    </div>
+
+    <section class="deep-section" aria-labelledby="claims-problem">
+      <p class="eyebrow">01 / Problem</p>
+      <h2 id="claims-problem">Less scanning. No invented certainty.</h2>
+      <p>Claim context is spread across structured fields, financial information, notes and references to other records. An effective first-read brief needs to collect the documented position, material developments, open questions and source references without treating a note as the underlying document or turning an allegation into a finding.</p>
+      <p>The work also needed to fit into an established Power Automate workflow and an existing claim page. Source data, financial sections, claimant details and notes had to remain available rather than being displaced by generated prose.</p>
+      <aside class="claims-guardrail"><span>Product boundary</span><h3>Assist review. Never adjudicate.</h3><p>The prompt contract rules out recommendations or decisions about coverage, reserves, liability, fraud, medical issues and settlement. The underlying records remain the basis for review.</p></aside>
+    </section>
+
+    <section class="deep-section" aria-labelledby="claims-design">
+      <p class="eyebrow">02 / System design</p>
+      <h2 id="claims-design">From evidence to a usable brief.</h2>
+      <div class="claims-flow" role="list" aria-label="Conceptual summary-processing stages">
+        <div role="listitem"><span>01 / Input</span><strong>Fields + notes</strong><p>Existing claim facts and source identifiers</p></div>
+        <div role="listitem"><span>02 / Contract</span><strong>Evidence-bound AI</strong><p>Structured JSON, citations and uncertainty</p></div>
+        <div role="listitem"><span>03 / Integration</span><strong>Parse + guardrails</strong><p>Provider text payload, schema and fallback</p></div>
+        <div role="listitem"><span>04 / Review</span><strong>Claim page</strong><p>Brief, timeline and preserved source information</p></div>
+      </div>
+      <p class="caption">Conceptual architecture only. It does not reproduce internal code, real claim information or a live flow configuration.</p>
+    </section>
+
+    <section class="deep-section" aria-labelledby="claims-judgment">
+      <p class="eyebrow">03 / Product and technical decisions</p>
+      <h2 id="claims-judgment">Three small choices with large trust implications.</h2>
+      <div class="claims-decisions">
+        {decisions.map(decision => <section class="claims-decision"><span>{decision.number}</span><h3>{decision.title}</h3><p><strong>The risk:</strong> {decision.challenge}</p><p><strong>What I did:</strong> {decision.approach}</p></section>)}
+      </div>
+      <div class="claims-date-example">
+        <div><p class="eyebrow">Timeline labels / conceptual example</p><h3>Occurred ≠ documented.</h3><p>A timeline should not silently promote the date a note was entered into the date of the event. These examples are interface rules, not actual claim records.</p></div>
+        <ul><li><strong>Occurred</strong><span>Use when the event date is supported.</span></li><li><strong>Documented</strong><span>Use when only the note date is supported.</span></li><li><strong>Date unavailable</strong><span>Use when neither date is supported.</span></li></ul>
+      </div>
+    </section>
+
+    <section class="deep-section" aria-labelledby="claims-integration">
+      <p class="eyebrow">04 / Implementation</p>
+      <h2 id="claims-integration">The integration boundary matters.</h2>
+      <p>Part of my work was diagnosing a Power Automate parser failure where a serialized model response was being treated as an already-parsed result object. I traced the response shape, corrected the use of its text payload and reconciled the Parse JSON action with the stricter canonical output contract. The project record includes confirmation that this repair worked.</p>
+      <p>I also refined the page’s information hierarchy, source-preserving summary and timeline presentation, responsive and keyboard behavior, and a feedback section that includes a link fallback if an embedded form is blocked. These were local implementation and handoff activities, not evidence of a production rollout.</p>
+      <div class="claims-status"><div><h3>Documented progress</h3><p>Parser repair confirmed by the project record; local prompt, schema, presentation and regression-test work.</p></div><div><h3>Still unverified</h3><p>End-to-end production execution, AI output quality in live use, survey submissions and deployment of later proposed prompt refinements.</p></div></div>
+    </section>
+
+    <section class="deep-section" aria-labelledby="claims-tests">
+      <p class="eyebrow">05 / Validation</p>
+      <h2 id="claims-tests">Test the contract. Name the limit.</h2>
+      <div class="claims-tests">{checks.map(check => <div><strong>{check.count}</strong><h3>{check.title}</h3><p>{check.detail}</p></div>)}</div>
+      <p class="caption">These are documented, focused local or offline tests—not native Power Automate execution, live model evaluations or production telemetry. The timeline test modeled date behavior in JavaScript rather than running Workflow Definition Language.</p>
+    </section>
+
+    <section class="deep-section" aria-labelledby="claims-result">
+      <p class="eyebrow">06 / Outcome + lessons</p>
+      <h2 id="claims-result">Generated content deserves review, not blind trust.</h2>
+      <p>The work produced a more structured and traceable AI-summary experience in the local implementation, clearer date attribution, a feedback path and targeted validation coverage. It also repaired a reported parsing failure. Adjuster handling time, cost savings, adoption, claim outcomes and ROI have not been measured.</p>
+      <blockquote>AI is valuable here when it makes the source easier to understand—without hiding uncertainty or taking decision authority away from the reviewer.</blockquote>
+      <p>This project demonstrates where my product and technical skills overlap: claims-domain context, interface judgment, structured data contracts, integration debugging and responsible use of AI.</p>
+      <a class="evo-link" href="/work/">← Back to professional work</a>
+    </section>
+  </article>
+</ProjectLayout>
+
+<style>
+.claims-facts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:40px 0 0}.claims-facts>div{border:1px solid var(--line);padding:23px;background:var(--light);min-width:0}.claims-facts span,.claims-flow span,.claims-guardrail>span,.claims-decision>span{font:.76rem ui-monospace,Consolas,monospace;letter-spacing:.05em;text-transform:uppercase;color:var(--blue)}.claims-facts strong{display:block;font-size:1.02rem;margin:9px 0}.claims-facts small{display:block;color:var(--muted);line-height:1.5}.claims-guardrail{max-width:850px;background:#132b4a;color:#fff;border-left:4px solid #78a9ff;padding:25px 30px;margin:32px 0 0}.claims-guardrail>span{color:#a9caff}.claims-guardrail h3{font-size:1.3rem;margin:10px 0}.claims-guardrail p{color:#dbe7fa;margin-bottom:0}.claims-flow{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin:32px 0 16px}.claims-flow>div{background:var(--light);border:1px solid var(--line);padding:20px 17px;position:relative;min-width:0}.claims-flow>div:not(:last-child):after{content:'→';position:absolute;right:-14px;top:40%;z-index:1;color:var(--blue);background:var(--paper);padding:2px}.claims-flow strong{display:block;margin:13px 0 7px;font-size:1rem}.claims-flow p{color:var(--muted);font-size:.89rem;margin:0;line-height:1.5}.claims-case .caption{font-size:.85rem;color:var(--muted);max-width:82ch}.claims-decisions{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin:32px 0 38px}.claims-decision{padding:25px 23px;background:var(--light);border-top:3px solid var(--blue)}.claims-decision h3{font-size:1.25rem;line-height:1.35;margin:13px 0}.claims-decision p{font-size:.94rem;color:var(--muted);line-height:1.6}.claims-decision p strong{color:var(--ink)}.claims-date-example{display:grid;grid-template-columns:1fr 1.15fr;gap:35px;border-block:1px solid var(--line);padding:28px 0}.claims-date-example h3{font-size:1.9rem;margin:10px 0}.claims-date-example p{color:var(--muted)}.claims-date-example ul{padding:0;margin:0;list-style:none;display:grid;gap:10px}.claims-date-example li{display:grid;grid-template-columns:135px 1fr;align-items:center;gap:12px;border:1px solid var(--line);padding:13px 16px}.claims-date-example li strong{border-left:3px solid var(--blue);padding-left:10px;font-size:.85rem}.claims-date-example li span{color:var(--muted);font-size:.9rem}.claims-status{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:28px 0}.claims-status>div{border:1px solid var(--line);background:var(--light);padding:25px}.claims-status h3{font-size:1.1rem;margin:0 0 10px}.claims-status p{color:var(--muted);margin:0}.claims-tests{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px;margin:28px 0 18px}.claims-tests>div{border:1px solid var(--line);padding:24px}.claims-tests>div>strong{color:var(--blue);font-size:3.3rem;letter-spacing:-.06em;line-height:1}.claims-tests h3{font-size:1rem;margin:16px 0 9px}.claims-tests p{font-size:.9rem;color:var(--muted);margin:0}
+@media(max-width:900px){.claims-flow{grid-template-columns:repeat(2,minmax(0,1fr))}.claims-flow>div:after{display:none}.claims-decisions{grid-template-columns:1fr}.claims-date-example{grid-template-columns:1fr;gap:15px}}
+@media(max-width:650px){.claims-facts,.claims-flow,.claims-status,.claims-tests{grid-template-columns:1fr}.claims-date-example li{grid-template-columns:1fr;gap:6px}.claims-facts{margin-top:26px}.claims-guardrail{padding:22px}}
+@media print{.claims-facts>div,.claims-flow>div,.claims-decision,.claims-tests>div,.claims-date-example li{break-inside:avoid}.claims-guardrail{background:white;color:black}.claims-guardrail p{color:black}}
+</style>
