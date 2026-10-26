@@ -11,6 +11,7 @@ The professional content was adapted from `career_source_of_truth.yaml`, `career
 | Role-based portal strategy and magic-link advocacy | SRC-017 |
 | AI user-group leadership, governance structure, presentations | SRC-014, SRC-015 |
 | AI-assisted claim summaries | SRC-021 |
+| AI claims summary case study (2026): evidence contract, parsing, dates, UX and local tests | Supplied `portfolio-case-study.md`, October 2026; related prior evidence SRC-021 |
 | Pricing calculator, move into IT, advanced VBA tooling | SRC-004, SRC-006, SRC-031 |
 | Product cadence, shared authority, team-level impact | SRC-011, SRC-012, SRC-013, SRC-038, SRC-039 |
 | API-driven exposure data and policy-form rules | SRC-025, SRC-027 |
@@ -75,3 +76,13 @@ A three-page Profile.pdf was supplied directly by the owner as an export of his 
 | Professional LinkedIn URL | 1 | Profile path as shown in the supplied PDF |
 
 Editorial boundaries: Retain Digital Product Manager as the actual title; Senior or Technical Product Manager are target positions, not titles held. LinkedIn's broad descriptions of roadmap strategy do not supersede interview details about shared authority. Earlier technical roles strengthen the story without implying exclusive/full-time sequencing where dates overlap. Do not publish the outdated address, raw PDF, career interview artifacts or sensitive personal information. A+ is shown exactly as listed; do not infer the issuer or current certification status without confirmation.
+
+## October 2026 AI claims-summary case study: publication and validation
+
+The case study at `/work/ai-claims-summary/` expands the existing AI-enabled claims summary (SRC-021) using the separately supplied `portfolio-case-study.md`. The project source documents work on an AI Builder/Power Automate integration, structured output with source citations, timeline date attribution, source-preserving claim-page design and local validation. A parser repair was confirmed to work by the user in the project record.
+
+The published page deliberately omits the client/product-specific label, claim fields and notes, source identifiers, internal flow configuration, survey endpoint, and unapproved system implementation details. The four-stage visual is conceptual rather than an actual system export.
+
+**Evidence boundaries:** the claimed 6 Node.js, 8 Chromium and 8 offline timeline checks are sourced from the supplied case study, not rerun against the internal work system for the public website. The record does not independently verify production rollout, adoption, time saved, claim decisions, model reliability in live use, end-to-end flow execution or survey operation. Later AI timeline prompt expansion was only a proposed handoff, not proven applied. The project's individual/team ownership and public disclosure authority remain subject to user approval.
+
+**Repo distinction:** the counts above describe the work project’s offline validations. CI on this Astro portfolio does not establish that the underlying Power Automate flow works.
