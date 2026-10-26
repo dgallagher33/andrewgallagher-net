@@ -34,6 +34,16 @@ No website secret, server SSH key, or Cloudflare API token is required in GitHub
 
 Docs: https://developers.cloudflare.com/pages/configuration/git-integration/ and https://developers.cloudflare.com/pages/configuration/custom-domains/
 
+## Cloudflare preview build troubleshooting (October 2026)
+
+The preview project is **Cloudflare Pages**: `andrewgallagher-portfolio-preview`, configured to build with `npm run build:preview` and publish `dist`. Its production branch is `staging`; this is not the public ExtraVM production host.
+
+In Cloudflare Pages → Settings → Builds → Build watch paths, set **Include paths to `*`** and Exclude paths to an empty list. An empty include list caused feature-branch pushes to be skipped with `skip_reason: path_config` even though preview branches were enabled. Cloudflare's wildcard matches nested directories.
+
+Avoid connecting the same Astro portfolio feature branch to a second **Cloudflare Workers Builds** project just to obtain a preview. The redundant Workers build attempted `npx wrangler preview` after a successful Astro build, and failed because this repository has no Wrangler `previews` configuration; its branch-specific trigger was removed. Do not add an artificial Worker entrypoint or Wrangler configuration merely to satisfy that unrelated build. Pages handles this site's static preview.
+
+The separate CI workflow validates Astro and local links. During the portfolio-recovery transition, `pull_request` is allowed for both `main` and `recovery/portfolio-preview-foundation`; after restoring `main`, all ordinary PRs should target `main`. Check that the GitHub Actions and Pages preview builds refer to the PR's **latest** commit, not a previous successful commit.
+
 ## PR preview
 
 Open a PR into `main` from a feature branch. GitHub runs `Validate Astro site`; Cloudflare Pages builds an individual preview after its Git integration is connected. Commit further changes to the branch to refresh its preview.
