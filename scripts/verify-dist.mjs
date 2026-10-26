@@ -2,7 +2,7 @@ import { existsSync, readFileSync, readdirSync } from 'node:fs';
 import { join, resolve, relative, sep } from 'node:path';
 
 const root = resolve('dist');
-const routes = ['index.html', 'resume/index.html', 'work/index.html', 'projects/index.html', 'projects/ai-sysadmin/index.html', 'projects/home-assistant/index.html'];
+const routes = ['index.html', 'resume/index.html', 'work/index.html', 'work/ai-claims-summary/index.html', 'projects/index.html', 'projects/ai-sysadmin/index.html', 'projects/home-assistant/index.html'];
 const errors = [];
 for (const route of routes) if (!existsSync(join(root, route))) errors.push('Missing route: ' + route);
 
