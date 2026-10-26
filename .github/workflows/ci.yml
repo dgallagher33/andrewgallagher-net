@@ -2,7 +2,7 @@ name: Validate Astro site
 
 on:
   pull_request:
-    branches: [main]
+    branches: [main, recovery/portfolio-preview-foundation]
   push:
     branches: [main, staging]
   workflow_dispatch:
