@@ -7,10 +7,27 @@ import { cases } from '../data/career';
     <p>Selected work at McNeil &amp; Co. My contribution, the result, and the decisions behind it.</p>
   </div>
   <div class="case-toolbar" hidden data-enhanced>
-    <p id="case-count" role="status">6 professional examples</p>
+    <p id="case-count" role="status">{cases.length + 1} professional examples</p>
     <button class="text-button" type="button" id="show-all">Show all work</button>
   </div>
   <div class="case-grid">
+    <article class="case-card" id="ai-claims-summary" data-case data-roles="product technical ai" aria-labelledby="ai-claims-summary-heading">
+      <p class="project-label">Featured / Responsible AI</p>
+      <h3 id="ai-claims-summary-heading">An AI claim brief built around the evidence</h3>
+      <p>Worked on an AI-assisted claims summary and timeline with source citations, explicit uncertainty and the original claim information preserved for review.</p>
+      <p class="case-result">Confirmed parser repair · Offline interface and data checks</p>
+      <div class="tags"><span class="tag">Power Automate</span><span class="tag">AI Builder</span><span class="tag">JSON contracts</span><span class="tag">UX / testing</span></div>
+      <p><a class="evo-link" href="/work/ai-claims-summary/">Explore the full claims case study →</a></p>
+      <details>
+        <summary>Read a summary<span class="sr-only">: An AI claim brief built around the evidence</span></summary>
+        <div class="case-story">
+          <h4>The problem</h4><p>Claim fields, notes and financial details can be difficult to synthesize without losing where statements came from or what remains uncertain.</p>
+          <h4>My contribution</h4><p>Worked on a structured AI output contract, source citations, Power Automate parsing, timeline date labels, responsive presentation and local regression checks.</p>
+          <h4>The outcome</h4><p>A traceable summary experience in the local implementation and a parser repair confirmed in the project record. Production performance, adoption and time savings were not measured.</p>
+          <h4>The decision behind it</h4><p>The brief assists review but cannot replace underlying source information or make claim decisions. Dates, uncertainty, fallbacks and test boundaries matter as much as generated prose.</p>
+        </div>
+      </details>
+    </article>
     {cases.map((item) => (
       <article class="case-card" id={item.id} data-case data-roles={item.roles.join(' ')} aria-labelledby={`${item.id}-heading`}>
         <p class="project-label">{item.category}</p>
